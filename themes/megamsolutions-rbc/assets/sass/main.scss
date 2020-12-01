@@ -1,0 +1,35 @@
+@import 'abstracts/functions';
+@import 'abstracts/mixins';
+@import 'abstracts/variables';
+
+@import 'base/base';
+@import 'base/animations';
+@import 'base/typography';
+@import 'base/utilities';
+
+@import 'components/button';
+@import 'components/timeline';
+@import 'components/hero';
+@import 'components/cards';
+@import 'components/carousel';
+@import 'components/ribon';
+@import 'components/showMore';
+@import 'components/toggleSwitch';
+
+// @import 'layout/grid';
+@import 'layout/header';
+@import 'layout/footer';
+
+@import 'pages/about-us';
+@import 'pages/blog';
+@import 'pages/credits';
+@import 'pages/quicklinks';
+@import 'pages/gallery';
+@import 'pages/people';
+@import 'pages/joinus';
+@import 'pages/research';
+@import 'pages/home';
+@import 'pages/event';
+@import 'pages/publications';
+@import 'pages/teaching';
+@import 'pages/wotkwithus';

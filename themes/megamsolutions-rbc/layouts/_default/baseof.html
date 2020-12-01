@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="{{ with .Site.LanguageCode }}{{ . }}{{ else }}en-US{{ end }}">
+  {{- partial "head.html" . -}}
+  <body>
+    <header class="header-section">
+    {{- partial "header.html" . -}} 
+    <div class="main-content">
+      <a href="#" class="sidebar-collapse">
+         <i class="fas fa-bars"></i>
+      </a>
+      {{- partial "topbar.html" . -}}
+      <div class="mobile__header">
+        <img src="{{ .Site.Params.logo | absURL }}" alt="{{.Site.Title}}" class="mobile__logo">
+      </div>
+      {{- partial "preloader.html" -}}
+      <main>
+       {{- block "main" . -}}{{- end }} 
+      </main>
+      {{- partial "footer.html" . -}}
+    </div>
+    </header>    
+  </body>
+</html>

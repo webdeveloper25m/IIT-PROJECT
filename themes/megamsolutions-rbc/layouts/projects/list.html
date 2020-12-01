@@ -1,0 +1,107 @@
+{{ define "main" }}
+<section class="section-hero-research hero hero--research">
+  <div class="hero-breadcrumb">
+    <ul class="hero-breadcrumb-list">
+      <li>
+        <a href="{{ `/` | absURL }}"><i class="fas fa-home"></i></a>
+      </li>
+      <li>
+        <a href="{{ `/home/research/` | absURL }}"><i class="fas fa-vial"></i> Research</a>
+      </li>
+      <li>
+        <a href="{{ `/projects/` | absURL }}"><i class="fas fa-project-diagram"></i> Projects</a>
+      </li>
+    </ul>
+  </div>
+</section>
+<section class="section-page-research mb-5">
+  <div class="container-fluid">
+    <div class="text-center">
+      <h2 class="heading-secondary u-margin-top-small u-margin-bottom-small">
+        Projects
+      </h2>
+    </div>
+    <div class="row justify-content-center">
+      {{ $tags := slice }}
+      {{$tags_Basic := slice}}
+      {{$tags_Applied := slice}}
+      {{$tags_Projects := slice}}
+      {{ $categories := slice "projects" }}
+        {{ range .Pages}}
+          {{if eq .Params.categories "projects"}}
+            {{ range sort .Params.tags}}
+              {{ $tags_Projects = $tags_Projects | append ( . ) }}
+            {{end}}
+          {{end}}
+        {{end}}
+      <div class="col-11">
+        <h3 class="mb-4 d-none">Category</h3>
+        {{$checked := ""}}
+        <ul class="nav nav-pills mb-4 d-none" id="category-tab" role="tablist">
+          {{ range $key,$value := ($categories | uniq ) }}
+            {{if not $key}}
+              {{$checked = "active"}}
+            {{else}}
+              {{$checked = ""}}
+            {{end}}
+            <li class="nav-item">
+              <a class="nav-link button button--medium  button--color{{add $key 1}} {{$checked}}" id="{{$value}}-tab" data-toggle="pill" href="#{{$value}}" role="tab" aria-controls="{{$value}}">{{$value | humanize | upper}}</a>
+            </li>
+          {{end}}
+        </ul>
+        <div class="tab-content" id="cattabcontent">
+          {{ range $key,$value := ($categories | uniq ) }}
+            {{if not $key}}
+              {{$checked = "active show"}}
+            {{else}}
+              {{$checked = ""}}
+            {{end}}
+            <div class="tab-pane {{$checked}}" id="{{$value}}" role="tabpanel">
+              <div class="filters-btn">
+                <div class="group-btn">
+                  <h3 class="mb-4">Tags</h3>
+                  <div class="button-group  ml-4" role="group" data-toggle="buttons" data-filter-group="tags">
+                    <button type="button" class="button is-checked" data-filter=".{{$value}}">ALL</button>
+                    {{$tag_list := slice}}
+                    {{if eq $value "basic-research"}}
+                      {{$tag_list = $tags_Basic}}
+                    {{else if eq $value "applied-research"}}
+                    {{$tag_list = $tags_Applied}}
+                    {{else if eq $value "projects"}}
+                    {{$tag_list = $tags_Projects}}
+                    {{end}}
+                    {{ range sort ($tag_list | uniq ) }}
+                    <button type="button" class="button" data-filter=".{{$value}}.{{ . | urlize}}">{{ .  }}</button>
+                    {{ end }}
+                  </div>
+                </div>
+              </div>
+            </div>
+          {{end}}
+        </div>
+      </div>
+    </div>
+
+    <div class="filter mt-5">
+      {{ range .Pages}}
+        {{$groups := slice}}
+        {{range .Params.tags}}
+          {{$groups = $groups | append .}}
+        {{end}}
+        {{$groups = $groups | append .Params.categories}}
+        {{$class := ""}}
+        {{if eq .Params.categories "basic-research"}}
+          {{$class = "card__research--color1 card__research--small"}}
+        {{else if eq .Params.categories "applied-research"}}
+          {{$class = "card__research--color2 card__research--small"}}
+        {{else if eq .Params.categories "projects"}}
+          {{$class = "card__research--color3"}}
+        {{end}}
+        <div class="col-xl-4 col-md-6 filter-item {{ range $groups }}{{. | urlize}} {{end}}">
+          {{partial "cards/research.html" (dict "context" . "class" $class)}}
+        </div>
+      {{ end }}
+    </div>
+  </div>
+</section>
+{{ end }}

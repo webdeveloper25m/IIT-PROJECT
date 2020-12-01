@@ -1,0 +1,36 @@
+{{ define "main" }}
+<section class="section-hero-gallery hero hero--gallery">
+  <div class="hero-breadcrumb">
+    <ul class="hero-breadcrumb-list">
+      <li>
+        <a href="{{ `/` | absURL }}"><i class="fas fa-home"></i></a>
+      </li>
+      <li>
+        <a href="{{ `/gallery/` | absURL }}"><i class="fas fa-images"></i> Gallery</a>
+      </li>
+    </ul>
+  </div>
+</section>
+<section class="section-page-gallery">
+  <div class="container mb-5">
+    <div class="text-center">
+      <h2 class="heading-secondary u-margin-top-small u-margin-bottom-small">
+        gallery
+      </h2>
+    </div>
+    <div class="gallery mx-auto">
+      {{ with .Site.Data.gallery.Gallery }}
+      {{ range .items}}
+      <div class="card card__gallery gallery-item">
+        <a href="{{.image}}" class="venobox" title="{{.title}}" data-gall="Gallery"><img src="{{.image}}" loading="lazy" alt="{{.title}}"  class="gallery-image"></a>
+        <div class="card__gallery-title">
+          <div class="text">{{.title}}</div>
+        </div>
+      </div>
+      {{end}}
+      {{end}}
+    </div>
+  </div>
+</section>
+
+{{ end }}

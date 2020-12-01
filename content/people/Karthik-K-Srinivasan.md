@@ -1,0 +1,17 @@
+---
+title: "Karthik K Srinivasan"
+firstname: "Karthik"
+middlename: "K"
+lastname: "Srinivasan"
+date: 2020-07-28T17:38:27+05:30
+categories: ["faculty"]
+image: /images/people/karthikks.png
+roles:  ["Professor"]
+email: karthikks@iitm.ac.in
+tags: ["Travel demand modelling and traveller behaviour", "Dynamic and stochastic network optimization and simulation"]
+draft: false
+weight: 100
+---
+
+
+Dr. Karthik K Srinivasan is with the Department of Civil Engineering at Indian Institute of Technology Madras. His fields of interest area are Intelligent Transportation Systems, Traffic data analysis and simulation, Travel demand data analysis and forecasting, Transportation Network Optimization and Simulation.

@@ -1,0 +1,21 @@
+.section-page-about-us {  
+  p {
+    margin-top: 1rem;
+    font-size: 1.3rem;
+    text-align: justify;
+  }
+
+  h1 {
+    margin: 1.5rem 0;
+    font-size: 2.5rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    color: $color-primary;
+    font-family: "Merriweather", sans-serif;
+  }
+  strong {
+    font-style: italic;
+    color: $color-card-3;
+    font-size: 1.4rem;
+  }
+}

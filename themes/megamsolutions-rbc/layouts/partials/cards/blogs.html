@@ -1,0 +1,40 @@
+{{ $readTime := mul (div (countwords .Content) 220.0) 60 }}
+{{ $minutes := math.Floor (div $readTime 60) }}
+{{if le $minutes 0 }}
+{{$minutes = 1}}
+{{end}}
+<div class="card card__blogs">
+  <a href="{{ .Permalink }}"><img src="/images/blogs/{{.Params.image}}" alt=""
+      class="card-img-top card__blogs-img" /></a>
+  <div class="card-body">
+    <div class="card__blogs-icons">
+      <span>{{dateFormat "Jan 2, 2006" .Date }}</span>
+    </div>
+    <a href="{{ .Permalink }}">
+      <h5 class="card-title card__blogs-header">{{.Title}}</h5>
+    </a>
+    <div class="blogs-single-icons">
+      <i class="fas fa-user-tie"></i>
+      {{range $key, $value := .Params.authors }}
+      {{ if $key }}, {{ end }}
+      {{$file := printf "people/%s.md" ($value | urlize)}}
+      {{with $.Site.GetPage $file}}
+      <a href="{{.Permalink}}"><span>{{$value}}</span></a>
+      {{else}}
+      <span>{{$value}}</span>
+      {{end}}
+      {{end}}
+    </div>
+    <div class="blogs-single-text showmore" data-config='{ "type": "text", "limit": 120, "more": " &#8594; show more", "less": " &#8592; less" }'>{{.Summary }}</div>
+    <div class="blogs-single-icons">
+      {{with .Params.blogs_tags}}
+      <i class="fas fa-tags"></i>
+      {{range $key, $value := . }}
+      {{ if $key }}, {{ end }}
+      <a href="/blogs_tags/{{ $value | urlize}}" class="blogs-single-tag">{{ $value  }}</a>
+      {{end}}
+      {{end}}
+    </div>
+    <p class="blogs-single-text">{{ $minutes }} min read</p>
+  </div>
+</div>

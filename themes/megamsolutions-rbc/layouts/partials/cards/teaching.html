@@ -1,0 +1,48 @@
+<div class="card card__teaching {{.class}} ">
+  {{$showcategory := .showcategory}}
+  {{with .context}}
+    {{if $showcategory}}
+        <div class="card-header">
+          <h5 class="card-title card__teaching-header">{{.Params.categories | humanize | upper}}</h5>
+        </div>
+    {{end}}
+    <a href="{{ .Permalink }}"><img src="/images/teaching/{{.Params.image}}" loading="lazy" alt="{{.Title}}"
+        class="card-img-top card__teaching-img" /></a>
+    
+    <div class="card-body">
+      {{if eq .Params.categories "nptel-courses"}}
+      <h5 class="card-title card__teaching-header"><a href="{{.Permalink}}">{{.Title}}</a></h5>
+      {{else}}
+      <h5 class="card-title card__teaching-header">{{.Params.num}} : {{.Title}}</h5>
+      {{end}}
+    </div>
+    <div class="card__teaching-icons">
+      <i class="fas fa-user-tie"></i>
+      {{$printed := false}}
+      {{range $key, $value := .Params.authors }}
+      {{if lt $key 3}}
+      {{ if $key }},{{ end }}
+      {{$file := printf "people/%s.md" ($value | urlize)}}
+      {{with site.GetPage $file}}
+      <a href="{{.Permalink}}"><span>{{$value}}</span></a>
+      {{else}}
+      <span>{{$value}}</span>
+      {{end}}
+      {{else}}
+      {{if not $printed}}
+      <span>and more</span>
+      {{$printed = true}}
+      {{end}}
+      {{end}}
+      {{end}}
+    </div>
+    <div class="card__teaching-icons">
+      {{with .Params.tags}}
+      <i class="fas fa-tags"></i>
+      {{range $key, $value := . }}
+      <a href="/tags/{{ $value | urlize}}" class="tag-link">{{ $value }}</a>
+      {{end}}
+      {{end}}
+    </div>
+  {{end}}
+</div>

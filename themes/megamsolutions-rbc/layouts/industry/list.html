@@ -1,0 +1,36 @@
+{{ define "main" }}
+<section class="section-collaborators ">
+  <div class="container-fluid">
+    <div class="row justify-content-center">
+      <div class="col-md-10">
+        <div class="text-center">
+          <h2 class="heading-secondary u-margin-top-medium u-margin-bottom-medium">
+            Industry
+          </h2>
+        </div>
+        <!--<div class="collaborators__partner">
+          <div class="collab-container u-margin-bottom-big">
+            <div class="card-collab wow fadeInUp" data-wow-duration="1.2s" style="visibility: visible; animation-delay: 1.2s; animation-name: fadeInUp;">
+              <div class="card-collab__cover" style="background-image: url(/images/IBSE_logo.png);"></div>
+            </div>
+            <div class="card-collab wow fadeInUp" data-wow-duration="1.3s" style="visibility: visible; animation-delay: 1.3s; animation-name: fadeInUp;">
+              <div class="card-collab__cover" style="background-image: url(/images/webtrust_logo_blue.jpg);"></div>
+            </div>
+            <div class="card-collab wow fadeInUp" data-wow-duration="1.4s" style="visibility: visible; animation-delay: 1.4s; animation-name: fadeInUp;">
+              <div class="card-collab__cover" style="background-image: url(/images/bosch.png);"></div>
+            </div>
+          </div>
+        </div> -->
+
+        <div class="collab-container u-margin-bottom-big">
+          {{ range .Site.Data.collaborator.industry.items}}
+            <div class="card-collab wow fadeInUp" data-wow-duration="1.1s" style="visibility: visible; animation-delay: 1.1s; animation-name: fadeInUp;">
+              <div class="card-collab__cover" style="background-image: url(/images/{{.image}});"></div>
+            </div>
+          {{end}}
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+{{end}}

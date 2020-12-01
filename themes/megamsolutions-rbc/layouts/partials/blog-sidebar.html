@@ -1,0 +1,43 @@
+<div class="blog-sidebar">
+  <div class="blog-category">
+    <h2 class="heading-tertiary u-margin-bottom-small">Category</h2>
+    <ul>
+      {{range .Site.Taxonomies.blogs_categories.ByCount}}
+      <li>
+        <a href="{{.Page.Permalink}}" class="blog-categories-link">
+          <i class="fa fa-angle-double-right"></i>
+          {{.Page.Title}}
+          <span class="badge badge-dark">{{ .Count }}</span>
+        </a>
+      </li>
+      {{end}}
+    </ul>
+  </div>
+
+  <div class="blog-tags">
+    <h2 class="heading-tertiary u-margin-bottom-small u-margin-top-medium">Popular Tags</h2>
+    {{range first 5 .Site.Taxonomies.blogs_tags.ByCount}}
+    <a href="{{.Page.Permalink}}" class="blog-tags-link">
+      {{.Page.Title}}
+    </a>
+    {{end}}
+  </div>
+
+  <div class="blog-recent">
+    <h2 class="heading-tertiary u-margin-bottom-small u-margin-top-medium">Recent Posts</h2>
+    <div class="recent-posts">
+      {{range first 5 .Pages}}
+      <div class="recent-single-post">
+        <div class="post-img">
+          <a href="{{.Permalink}}"><img src="/images/blogs/{{.Params.image}}" alt="{{.Title}}"></a>
+        </div>
+        <div class="post-content">
+          <p><a href="{{.Permalink}}">{{.Title}}</a></p>
+          <span>{{dateFormat "Jan 02, 2006" .Date}}</span>
+        </div>
+      </div>
+      {{end}}
+    </div>
+  </div>
+
+</div>

@@ -1,0 +1,34 @@
+{{ define "main" }}
+<section class="section-hero-joinus hero hero--joinus">
+  <div class="hero-breadcrumb">
+    <ul class="hero-breadcrumb-list">
+      <li>
+        <a href="{{ `/` | absURL }}"><i class="fas fa-home"></i></a>
+      </li>
+      <li>
+        <a href="{{ `/join-us/` | absURL }}"><i class="fas fa-sign-in-alt"></i> Join Us</a>
+      </li>
+      <li>
+        <a href="#"><i class="fas fa-sign-in-alt"></i>{{.Title}}</a>
+      </li>
+    </ul>
+  </div>
+</section>
+<section class="section-page-joinus mb-5">
+  <div class="container">
+    <div class="text-center">
+      <h2 class="heading-secondary u-margin-top-small u-margin-bottom-small">
+        {{.Title}}
+      </h2>
+    </div>
+    <div class="row justify-content-center">
+      <div class="col-md-8 joinus-single-page__img mb-4" style="background-image: url(/images/join-us/{{.Params.image}});">
+        <!-- <img src="/images/research/{{.Params.image}}" alt="{{.Title}}" class="research-single-page__img"> -->
+      </div>
+      <article class="col-md-8 text-justify">
+        {{.Content}}
+      </article>
+    </div>
+  </div>
+</section>
+{{end}}

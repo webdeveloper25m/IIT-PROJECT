@@ -1,0 +1,12 @@
+---
+title: "Analysis of Experimental Conditions, Measurement Strategies, and Model Identification Approaches on Parameter Estimation in Plug Flow Reactors"
+date: 2019-08-20
+authors: ["Tirthankar Sengupta", "Sridharakumar Narasimhan", "Nirav Bhatt", "others"]
+tags: ["heat transfer", "chemical reactions", "kinetic modeling", "fluxes", "theoretical and computational chemistry"]
+doi: "https://doi.org/10.1021/acs.iecr.9b00266"
+publishedon: "Industrial & engineering chemistry process design and development"
+image: "Analysis-of-Experimental-Conditions-Measurement-Strategies.gif"
+altmetric: 60981247
+draft: false
+---
+Continuous flow reactors such as Plug Flow Reactors (PFR) have been used in the identification of reaction systems (Moore and Jensen, Angew. Chem. 2014, 126, 480--483). It is important to understand the impact of operation conditions, measurement strategies, and kinetic model identification methods on the identification of reaction systems in a PFR. Typically, for kinetic model identification using the simultaneous identification approach, concentrations are measured as a function of residence time under isothermal operating conditions in a PFR. On the other hand, concentrations and temperature are required to be measured as a function of residence time under nonisothermal conditions for kinetic model identification of multiple reaction systems in a PFR. In this work, we extend the incremental method for identification of kinetic and heat transport models using measurements from nonisothermal steady-state PFRs. This work investigates the role of experimental conditions, measurement strategies and identification methods on the quality of estimations of parameters from concentrations and/or temperature measurements. Further, this paper compares (i) the minimum number of species to be measured for parameter estimation, (ii) isothermal and nonisothermal experimental conditions, (iii) different levels of spatial distribution of concentration and temperature measurements and (iv) simultaneous and incremental identification approaches with respect to the quality of estimated parameters. The last three aspects are investigated through carefully designed numerical studies.

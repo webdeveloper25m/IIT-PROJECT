@@ -1,0 +1,92 @@
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="Content-Language" content="{{ .Site.Language.Lang }}" />
+  {{ with .Site.Params.author }}
+  <meta name="author" content="{{ . }}" />
+  {{ end }}
+  <meta
+    name="description"
+    content="{{ .Description | default (.Summary | default .Site.Params.description ) }}"
+  />
+  <meta
+    name="keywords"
+    content="{{ (delimit .Keywords `,`) | default .Site.Params.keywords }}"
+  />
+  {{ if .Permalink }}
+  <base href="{{ .Permalink }}" />
+  {{ end }}
+  <title>
+    {{ block "title" . }}
+    {{ if eq .Title .Site.Title}}
+    Home | {{ .Site.Title }}
+    {{ else }}
+    {{.Title}} | {{ .Site.Title }}
+    {{end}}
+    {{ end }}
+  </title>
+  {{ if .Permalink }}
+  <link rel="canonical" href="{{ .Permalink }}" />
+  {{ end }}
+
+  <!--  Preconnect to the fonts’ origin. -->
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  {{$font := "https://fonts.googleapis.com/css?family=Lora:300,600,700%7CLato:300,400,700,900%7CMerriweather:300,700%7COpen+Sans:400,700"}}
+
+  <link rel="preload" as="style" href="{{$font}}&display=swap" />
+
+  <link
+    href="{{$font}}&display=swap"
+    rel="stylesheet"
+    media="print" onload="this.media='all'"
+  />
+  <link rel="preload" as="style" href="{{$font}}&display=swap" />
+  <noscript>
+    <link rel="stylesheet" href="{{$font}}&display=swap" />
+  </noscript>
+
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id={{.Site.Params.google_analitycs_id}}"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+
+    gtag('config', '{{.Site.Params.google_analitycs_id}}');
+  </script>
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css"
+    integrity="sha512-L7MWcK7FNPcwNqnLdZq86lTHYLdQqZaz5YcAgE+5cnGmlw8JT03QB2+oxL100UeB6RlzZLUxCGSS4/++mNZdxw=="
+    crossorigin="anonymous" />
+
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+    integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
+  integrity="sha512-c42qTSw/wPZ3/5LBzD+Bw5f7bSF2oxou6wEb+I/lqeaKV5FDIfMvvRp772y4jcJLKuGUOpbJMdg/BTl50fJYAw=="
+  crossorigin="anonymous" />
+
+  <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.css"
+    integrity="sha512-yHknP1/AwR+yx26cB1y0cjvQUMvEa2PFzt1c9LlS4pRQ5NOTZFWbhBig+X9G9eYW/8m0/4OXNx8pxJ6z57x0dw=="
+    crossorigin="anonymous" /> -->
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/venobox/1.9.1/venobox.min.css"
+    integrity="sha512-e+0yqAgUQFoRrJ4pZigQXpOE0S7J9IGwmgH801h4H5ODqOCG8/GRfXHQ+9ab754NL79O7wDwdjwY3CcU8sEANg=="
+    crossorigin="anonymous" />
+
+  {{ if .Site.IsServer }}
+  {{ $cssOpts := (dict "targetPath" "css/style.css" "enableSourceMap" true ) }}
+  {{ $styles := resources.Get "sass/main.scss" | toCSS $cssOpts }}
+  <link rel="stylesheet" href="{{ $styles.RelPermalink }}" media="screen" />
+  {{ else }}
+  {{ $cssOpts := (dict "targetPath" "css/style.css" ) }}
+  {{ $styles := resources.Get "sass/main.scss" | toCSS $cssOpts | minify | fingerprint }}
+  <link
+    rel="stylesheet"
+    href="{{ $styles.RelPermalink }}"
+    integrity="{{ $styles.Data.Integrity }}"
+    crossorigin="anonymous"
+    media="screen"
+  />
+  {{ end }}
+</head>

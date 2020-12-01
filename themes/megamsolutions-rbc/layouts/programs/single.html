@@ -1,0 +1,31 @@
+{{ define "main" }}
+<section class="section-hero-programs hero hero--programs">
+  <div class="hero-breadcrumb">
+    <ul class="hero-breadcrumb-list">
+      <li>
+        <a href="{{ `/` | absURL }}"><i class="fas fa-home"></i></a>
+      </li>
+      <li>
+        <a href="{{ `/home/collaborators/` | absURL }}"><i class="fas fa-handshake"></i> Collaborators</a>
+      </li>
+      <li>
+        <a href="#"><i class="fas fa-chalkboard"></i>{{.Title | truncate 80}}</a>
+      </li>
+    </ul>
+  </div>
+</section>
+<section class="section-page-programs mb-5">
+  <div class="container-fluid">
+    <div class="text-center">
+      <h2 class="heading-secondary u-margin-top-small u-margin-bottom-small">
+        {{.Title}}
+      </h2>
+    </div>
+    <div class="row justify-content-center">
+      <div class="col-lg-10">
+        {{partial "cards/programs.html" .}}
+      </div>
+    </div>
+  </div>
+</section>
+{{end}}

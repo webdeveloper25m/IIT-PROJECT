@@ -1,0 +1,19 @@
+  <nav class="sidebar" id='sidebar'>
+    <div class="sidebar__header">
+      <img src="{{ .Site.Params.logo | absURL }}" alt="{{.Site.Title}}" class="sidebar__logo">
+      <span class="sidebar__close">&times;</span>
+    </div>
+    <ul class="sidebar__nav">
+      {{ partial "sidebar_menu.html" (dict "menu" .Site.Menus.main "page" . "site" .Site) }}
+    </ul>
+    <div class="sidebar__social-icons">
+      <a href="https://twitter.com/rbc_dsai_iitm" class="social-link"><i class="fab fa-twitter"></i></a>
+      <a href="https://www.linkedin.com/company/rbcdsai/" class="social-link"><i class="fab fa-linkedin-in"></i></a>
+      <a href="https://www.facebook.com/rbcdsai" class="social-link"><i class="fab fa-facebook-f"></i></a>
+      <a href="https://www.instagram.com/rbcdsai/" class="social-link"><i class="fab fa-instagram"></i></a>
+      <a href=" https://www.youtube.com/channel/UCKaYqGvmULmTrN0PH5YPFcA  " class="social-link"><i class="fab fa-youtube"></i></a>
+    </div>
+    <div class="sidebar__header">
+      <!-- <img src="{{ .Site.Params.iitm_logo | absURL }}" class="sidebar__logo" alt="IITM Logo"> -->
+    </div>
+  </nav>

@@ -1,0 +1,396 @@
+baseURL = "https://rbc-dsai.megamsolutions.com"
+languageCode = "en-us"
+title = "Robert Bosch Center for Data Science and Artificial Intelligence"
+theme = "megamsolutions-rbc"
+enableRobotsTXT=true
+enableEmoji = true
+ignoreErrors = ["error-remote-getjson"]
+############################## navigation ###############################
+
+[[menu.main]]
+name = "Home"
+URL = ""
+pre = "fas fa-home"
+weight = 1
+
+[[menu.main]]
+name = "Research"
+URL = "research"
+identifier = "research"
+pre = "fas fa-vial"
+weight = 2
+
+[[menu.main]]
+name = "Overview"
+identifier = "research-overview"
+URL = "home/research"
+pre = "fas fa-vial"
+parent = "research"
+weight = 1
+
+[[menu.main]]
+name = "Themes"
+URL = "research"
+pre = "fas fa-vial"
+parent = "research"
+weight = 2
+
+[[menu.main]]
+name = "Publications"
+URL = "publications"
+pre = "fas fa-file-alt"
+parent = "research"
+weight = 3
+
+[[menu.main]]
+name = "Software"
+URL = "software"
+pre = "far fa-keyboard"
+parent = "research"
+weight = 4
+
+[[menu.main]]
+name = "projects"
+URL = "projects"
+pre = "fas fa-project-diagram"
+parent = "research"
+weight = 5
+
+[[menu.main]]
+name = "Work with Us"
+URL = "work-with-us"
+identifier = "work-with-us"
+pre = "fas fa-users"
+weight = 3
+
+[[menu.main]]
+name = "Overview"
+URL = "home/work-with-us"
+identifier = "work-with-us-overview"
+pre = "fas fa-users"
+parent = "work-with-us"
+weight = 1
+
+[[menu.main]]
+name = "Industry"
+URL = "work-with-us/industry"
+identifier = "work-with-us-industry"
+pre = "fas fa-users"
+parent = "work-with-us"
+weight = 2
+
+[[menu.main]]
+name = "Sponsored Research"
+URL = "work-with-us/sponsored-research"
+pre = "fas fa-users"
+parent = "work-with-us"
+weight = 3
+
+[[menu.main]]
+name = "People"
+URL = "people"
+identifier = "people"
+pre = "fas fa-user"
+weight = 4
+
+[[menu.main]]
+name = "Faculty"
+URL = "faculty"
+pre = "fas fa-user"
+parent = "people"
+weight = 1
+
+[[menu.main]]
+name = "Collaborators"
+URL = "collaborators"
+pre = "fas fa-user"
+parent = "people"
+weight = 2
+
+[[menu.main]]
+name = "Researchers"
+identifier = "researchers"
+URL = "researchers"
+pre = "fas fa-user"
+parent = "people"
+weight = 3
+
+[[menu.main]]
+name = "Visitors"
+URL = "visitors"
+pre = "fas fa-user"
+parent = "people"
+weight = 4
+
+[[menu.main]]
+name = "staff"
+URL = "staff"
+pre = "fas fa-user"
+parent = "people"
+weight = 5
+
+[[menu.main]]
+name = "Management"
+URL = "management"
+pre = "fas fa-user"
+parent = "people"
+weight = 6
+
+[[menu.main]]
+name = "Alumni"
+URL = "alumni"
+pre = "fas fa-user"
+parent = "people"
+weight = 7
+
+[[menu.main]]
+name = "Collaborators"
+URL = "programs"
+identifier = "programs"
+pre = "fas fa-handshake"
+weight = 5
+
+[[menu.main]]
+name = "Overview"
+URL = "home/collaborators"
+identifier = "collab-overview"
+pre = "fas fa-handshake"
+parent = "programs"
+weight = 1
+
+[[menu.main]]
+name = "RBCDSAI Distinguished Fellow Program"
+URL = "programs/distinguished-fellow-program/"
+pre = "fas fa-chalkboard"
+parent = "programs"
+weight = 2
+
+[[menu.main]]
+name = "Associate Research Program"
+URL = "programs/associate-researcher-program/"
+pre = "fas fa-chalkboard"
+parent = "programs"
+weight = 3
+
+[[menu.main]]
+name = "Visiting Research Program"
+URL = "programs/visiting-researcher-program/"
+pre = "fas fa-chalkboard"
+parent = "programs"
+weight = 4
+
+[[menu.main]]
+name = "Research Experience Program"
+URL = "programs/research-experience-program"
+pre = "fas fa-chalkboard"
+parent = "programs"
+weight = 5
+
+[[menu.main]]
+name = "Industry"
+URL = "industry"
+pre = "fas fa-handshake"
+parent = "programs"
+weight = 6
+
+[[menu.main]]
+name = "Government"
+URL = "government"
+pre = "fas fa-handshake"
+parent = "programs"
+weight = 7
+
+[[menu.main]]
+name = "Academics"
+URL = "teaching"
+identifier = "academics"
+pre = "fas fa-chalkboard-teacher"
+weight = 6
+
+[[menu.main]]
+name = "Overview"
+URL = "home/academics"
+identifier = "teaching-overview"
+pre = "fas fa-chalkboard-teacher"
+parent = "academics"
+weight = 1
+
+[[menu.main]]
+name = "On-line courses"
+URL = "online"
+pre = "fas fa-chalkboard-teacher"
+parent = "academics"
+weight = 2
+
+[[menu.main]]
+name = "IITM Electives"
+URL = "iitm-electives"
+pre = "fas fa-chalkboard-teacher"
+parent = "academics"
+weight = 3
+
+[[menu.main]]
+name = "Dual Degree"
+URL = "academics/dual-degree-program"
+pre = "fas fa-chalkboard-teacher"
+parent = "academics"
+weight = 4
+
+[[menu.main]]
+name = "Certificatation"
+URL = "academics/certificate-in-technology-and-management"
+pre = "fas fa-chalkboard-teacher"
+parent = "academics"
+weight = 5
+
+[[menu.main]]
+name = "Summer Schools"
+URL = "academics/summer-schools"
+pre = "fas fa-chalkboard-teacher"
+parent = "academics"
+weight = 6
+
+[[menu.main]]
+name = "Workshops"
+URL = "academics/workshop"
+pre = "fas fa-chalkboard-teacher"
+parent = "academics"
+weight = 7
+
+[[menu.main]]
+name = "Blogs"
+URL = "blogs"
+pre = "fas fa-blog"
+weight = 7
+
+[[menu.main]]
+name = "News"
+URL = "news"
+pre = "fas fa-newspaper"
+weight = 8
+
+[[menu.main]]
+name = "Events"
+URL = "events"
+pre = "fas fa-calendar-alt"
+weight = 9
+
+[[menu.main]]
+name = "Join Us"
+URL = "join-us"
+identifier = "join-us"
+pre = "fas fa-sign-in-alt"
+weight = 10
+
+[[menu.main]]
+name = "Overview"
+URL = "home/joinus"
+identifier = "join-us-overview"
+pre = "fas fa-sign-in-alt"
+parent = "join-us"
+weight = 1
+
+#[[menu.main]]
+#name = "Prospective faculty"
+#URL = "join-us/prospective-faculty/"
+#pre = "fas fa-sign-in-alt"
+#parent = "join-us"
+#weight = 2
+
+[[menu.main]]
+name = "Post Bacs"
+URL = "join-us/post-baccalaureate-fellowships"
+pre = "fas fa-sign-in-alt"
+parent = "join-us"
+weight = 3
+
+[[menu.main]]
+name = "Post Docs"
+URL = "join-us/post-doctoral-fellows"
+pre = "fas fa-sign-in-alt"
+parent = "join-us"
+weight = 4
+
+[[menu.main]]
+name = "PhD/MS"
+URL = "join-us/phd-ms"
+pre = "fas fa-sign-in-alt"
+parent = "join-us"
+weight = 5
+
+[[menu.main]]
+name = "Project Assistants/Associates"
+URL = "join-us/project-assistants-associates"
+pre = "fas fa-sign-in-alt"
+parent = "join-us"
+weight = 6
+
+[[menu.main]]
+name = "Internships"
+URL = "join-us/internships"
+pre = "fas fa-sign-in-alt"
+parent = "join-us"
+weight = 7
+
+[[menu.main]]
+name = "Other Opening"
+URL = "join-us/other_openings"
+pre = "fas fa-sign-in-alt"
+parent = "join-us"
+weight = 8
+
+[[menu.main]]
+name = "Gallery"
+URL = "gallery"
+pre = "fas fa-images"
+weight = 11
+
+[[menu.main]]
+name = "About Us"
+URL = "about-us"
+pre = "fas fa-address-card"
+weight = 12
+
+########################### taxonomies #################################
+[taxonomies]
+  author = "authors"
+  tag = "tags"
+  category="categories"
+  blogs_tag = "blogs_tags"
+  blogs_category = "blogs_categories"
+
+[markup]
+  [markup.highlight]
+    anchorLineNos = false
+    codeFences = true
+    guessSyntax = false
+    hl_Lines = ""
+    lineAnchors = ""
+    lineNoStart = 1
+    lineNos = true
+    lineNumbersInTable = true
+    noClasses = true
+    style = "monokai"
+    tabWidth = 4
+
+#################### default parameters ################################
+[params]
+main_menu = "Home"
+logo = "images/logo.svg"
+iitm_logo ="images/IIT_Madras_Logo.png"
+ibse_logo ="images/IBSE_logo.png"
+footer_logo = "images/logo_main.svg"
+# meta data
+author = "Megamsolutions"
+description = "RBC DSAI site"
+keywords = "IIT Madras, RBC DSAI, Data Science, Artificial Intelligence, Machine Learning"
+address = "5th floor, Block II, Bhupat and Jyoti Mehta School of Biosciences, Indian Institute of Technology Madras, Chennai-600036"
+# google analitycs ID
+google_analitycs_id = "G-16WSZG1CF9"
+# copyright
+copyright = "Robert Bosch Center for Data Science and Artificial Intelligence | IIT Madras &copy; 2020"
+
+# Preloader
+[params.preloader]
+enable = false
+preloader = "images/preloader.gif" # use .png , .svg or .gif format

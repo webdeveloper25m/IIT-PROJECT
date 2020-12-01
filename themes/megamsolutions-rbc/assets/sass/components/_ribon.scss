@@ -1,0 +1,144 @@
+.ribbon {
+  width: 12rem;
+  height: 12rem;
+  overflow: hidden;
+  position: absolute;
+  z-index: 100;
+  backface-visibility: hidden;
+
+  &::before,
+  &::after {
+    position: absolute;
+    z-index: -1;
+    content: '';
+    display: block;
+    border: 0.5rem solid $color-primary-dark;
+  }
+
+  span {
+    position: absolute;
+    display: block;
+    width: 18rem;
+    padding: 1rem 0;
+    background-color: $color-primary;
+    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.1);
+    color: $color-white;
+    font: 700 18px/1 'Lato', sans-serif;
+    text-shadow: 0 1px 1px rgba(0, 0, 0, 0.2);
+    text-transform: uppercase;
+    text-align: center;
+  }
+
+  &-top-left {
+    top: -1rem;
+    left: -1rem;
+
+    &::before,
+    &::after {
+      border-top-color: transparent;
+      border-left-color: transparent;
+    }
+
+    &::before {
+      top: 0;
+      right: 0;
+    }
+
+    &::after {
+      bottom: 0;
+      left: 0;
+    }
+
+    span {
+      right: -1.9rem;
+      top: 2.9rem;
+      transform: rotate(-45deg);
+    }
+  }
+}
+
+.ribbon1 {
+  position: absolute;
+  top: -0.6rem;
+  // right: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 100;
+  color: $color-white;
+  backface-visibility: hidden;
+
+  &:after {
+    position: absolute;
+    content: '';
+    width: 0;
+    height: 0;
+    // border-left: 3.7rem solid transparent;
+    // border-right: 3.7rem solid transparent;
+    border-top: 0.9rem solid $color-primary;
+  }
+  span {
+    position: relative;
+    display: block;
+    text-align: center;
+    background: $color-primary;
+    font-size: 1rem;
+    line-height: 1;
+    padding: 0.6rem 0.2rem 0.4rem;
+    border-top-right-radius: 0.6rem;
+    border-bottom-right-radius: 0.5rem;
+    border-bottom-left-radius: 0.5rem;
+    width: 7rem;
+    &:before,
+    &:after {
+      position: absolute;
+      content: '';
+    }
+    &:before {
+      height: 0.6rem;
+      width: 0.6rem;
+      left: -0.6rem;
+      top: 0;
+      background: $color-primary;
+    }
+    &:after {
+      height: 0.6rem;
+      width: 0.8rem;
+      left: -0.8rem;
+      top: 0;
+      border-radius: 0.8rem 0.8rem 0 0;
+      background: $color-primary-dark;
+    }
+  }
+
+  &--color1 {
+    &:after {
+      border-top: 0.9rem solid $color-card-3;
+    }
+    span {
+      background: $color-card-3;
+
+      &:before {
+        background: $color-card-3;
+      }
+      &:after {
+        background: $color-card-3-light;
+      }
+    }
+  }
+
+  &--color2 {
+    &:after {
+      border-top: 0.9rem solid $color-card-4;
+    }
+    span {
+      background: $color-card-4;
+      &:before {
+      background: $color-card-4;
+    }
+    &:after {
+      background: $color-card-4-light;
+    }
+    }
+
+  }
+}

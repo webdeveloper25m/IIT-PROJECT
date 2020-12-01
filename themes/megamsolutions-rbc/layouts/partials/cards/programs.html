@@ -1,0 +1,14 @@
+<div class="card card__programs" id="{{.File.BaseFileName}}">
+  <div class="row no-gutters">
+    <div class="col-sm-6">
+      <a href="{{.Permalink}}"><img src="/images/programs/{{.Params.image}}" alt="{{.Title}}"
+          loading="lazy" class="card-img card__programs-img" /></a>
+    </div>
+    <div class="col-sm-6">
+      <div class="card-body">
+        <h5 class="card-title card__programs-header"><a href="{{.Permalink}}">{{.Title}}</a></h5>
+        <p class="card__programs-content">{{.Content}}</p>
+      </div>
+    </div>
+  </div>
+</div>

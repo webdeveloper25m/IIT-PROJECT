@@ -1,0 +1,108 @@
+{{ define "main" }}
+<section class="section-hero-publications hero hero--publications">
+  <div class="hero-breadcrumb">
+    <ul class="hero-breadcrumb-list">
+      <li>
+        <a href="{{ `/` | absURL }}"><i class="fas fa-home"></i></a>
+      </li>
+      <li>
+        <a href="{{ `/home/research/` | absURL }}"><i class="fas fa-vial"></i> Research</a>
+      </li>
+      <li>
+        <a href="{{ `/publications/` | absURL }}"
+          ><i class="fas fa-file-alt"></i> Publications</a
+        >
+      </li>
+    </ul>
+  </div>
+</section>
+<section class="section-page-publications">
+  <div class="container-fluid w-75 mb-5">
+    <div class="text-center">
+      <h2 class="heading-secondary u-margin-top-small u-margin-bottom-small">
+        Publications
+      </h2>
+    </div>
+    <div class="row justify-content-center">
+      {{ $years := slice }}
+      {{ $authors := slice }}
+      {{ $tags_dict := dict }}
+      {{ range .Pages.GroupByDate "2006"}}
+        {{ $years = $years | append .Key }}
+        {{$temp_tags := slice }}
+        {{ range .Pages}}
+          {{ range sort .Params.tags}}
+            {{ $temp_tags = $temp_tags | append ( . ) }}
+          {{end}}
+        {{ end }}
+        {{$tags_dict = merge $tags_dict (dict .Key $temp_tags)}}
+      {{end}}
+
+      <div class="col-11">
+        <div class="compact float-right">
+          <h4 class="mb-4">Compact</h4>
+          <label class="switch">
+            <input type="checkbox" id="compact">
+            <span class="slider round"></span>
+          </label>
+        </div>
+        <h3 class="mb-4">Year</h3>
+        {{$checked := ""}}
+        <ul class="nav nav-pills mb-4" id="category-tab" role="tablist">
+          {{ range $key,$value := ($years | uniq ) }}
+            {{if not $key}}
+              {{$checked = "active"}}
+            {{else}}
+              {{$checked = ""}}
+            {{end}}
+            <li class="nav-item">
+              <a class="nav-link button button--medium  button--color{{add (mod $key 4) 1}} {{$checked}}" id="{{$value}}-tab"
+                data-toggle="pill" href="#year-{{$value}}" role="tab" aria-controls="{{$value}}">{{$value}}</a>
+            </li>
+          {{end}}
+        </ul>
+        <div class="tab-content" id="cattabcontent">
+          {{ range $key,$value := ($years | uniq ) }}
+            {{if not $key}}
+            {{$checked = "active show"}}
+            {{else}}
+              {{$checked = ""}}
+            {{end}}
+            <div class="tab-pane {{$checked}}" id="year-{{$value}}" role="tabpanel">
+              <div class="filters-btn">
+                <div class="group-btn">
+                  <!-- <h3 class="mb-4">Tags</h3> -->
+                  <div class="button-group ml-4" role="group" data-toggle="buttons" data-filter-group="tags">
+                    <button type="button" class="button is-checked d-none" data-filter=".{{$value}}">ALL</button>
+                    {{ range sort (index $tags_dict $value) | uniq }}
+                      <button type="button" class="button d-none" data-filter=".{{$value}}.{{ . | urlize}}">{{ . }}</button>
+                    {{ end }}
+                  </div>
+                </div>
+              </div>
+            </div>
+          {{end}}
+        </div>
+      </div>
+    </div>
+    <div class="row filter mt-5">
+      {{$num := -1 }}
+      {{$class := ""}}
+      {{ range .Pages.GroupByDate "2006"}}
+        {{$num = add $num 1}}
+        {{ range .Pages.ByDate.Reverse}}
+          {{$groups := slice}}
+          {{range .Params.tags}}
+            {{$groups = $groups | append ( . | lower) }}
+          {{end}}
+          {{$groups = $groups | append (dateFormat "2006" .Date)}}
+          {{$class = print "card__publications--color"  (add (mod $num 4) 1) }}
+          <div class="col-md-12 filter-item mx-auto {{ range $groups }}{{. | urlize}} {{end}}">
+            {{partial "cards/publications.html" (dict "context" . "class" $class)}}
+          </div>
+        {{ end }}
+      {{ end }}
+    </div>
+  </div>
+</section>
+{{ end }}

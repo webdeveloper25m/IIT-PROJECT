@@ -1,0 +1,113 @@
+<!-- footer -->
+<footer class="footer" id="footer">
+  <div class="footer__box">
+    <div class="container-fluid">
+      <div class="row justify-content-sm-around">
+        <div class="col-md-3">
+          <div class="footer__content">
+            <div class="footer__logo">
+              <img src="{{ .Site.Params.footer_logo | absURL }}" class="footer__img" alt="logo footer">
+            </div>
+            <p class="footer__text">
+              Founded in August 2017, with a vision to become an internationally renowned centre for data science research, where long-standing fundamental research problems, cutting across disciplines, are targeted and solved.
+            </p>
+            <div class="footer__social-icons">
+              <a href="https://twitter.com/rbc_dsai_iitm" class="social-link"><i class="fab fa-twitter"></i></a>
+              <a href="https://www.linkedin.com/company/rbcdsai/" class="social-link"><i class="fab fa-linkedin-in"></i></a>
+              <a href="https://www.facebook.com/rbcdsai" class="social-link"><i class="fab fa-facebook-f"></i></a>
+              <a href="https://www.instagram.com/rbcdsai/" class="social-link"><i class="fab fa-instagram"></i></a>
+              <a href=" https://www.youtube.com/channel/UCKaYqGvmULmTrN0PH5YPFcA  " class="social-link"><i class="fab fa-youtube"></i></a>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-2 col-sm-4 pl-5">
+          <h2 class="footer__heading">Useful Links</h2>
+          <ol class="list-unstyled">
+            {{ $current := . }}
+            {{$active := false}}
+            {{ range (where .Site.RegularPages "Section" "quicklinks") }}
+                <li class="footer__list {{if $active }}active{{ end }}">
+                  <a href="{{ .Permalink }}" class="footer__links"><i class="fa fa-angle-right"></i> {{ .Title }}</a>
+                </li>
+            {{end}}
+            <li class="footer__list {{if $active }}active{{ end }}"><a href="{{ `upcoming` | absURL }}" class="footer__links">
+                <i class="fa fa-angle-right"></i> Upcoming Events</a>
+            </li>
+            {{$active = (eq .Name "Credits")}}
+            <li class="footer__list {{if $active }}active{{ end }}"><a href="{{ `credits` | absURL }}" class="footer__links">
+              <i class="fa fa-angle-right"></i> Credits</a>
+            </li>
+          </ol>
+        </div>
+        <div class="col-md-3 col-sm-4 pl-5">
+          <h2 class="footer__heading">Contact Us</h2>
+          <p class="footer__address">
+            5th floor, Block II, <br>
+            Bhupat and Jyoti Mehta School of Biosciences, <br>
+            Indian Institute of Technology Madras, <br>
+            Chennai-600036,<br>
+            India.<br>
+          </p>
+          <div class="footer__map">
+            <a class="btn btn--red-small footer__map-link" target="_blank" href="https://goo.gl/maps/zmR8a5fnHeeerqi99">Map <i class="fas fa-map-marker-alt"></i></a>
+          </div>
+
+        </div>
+        <div class="col-md-4">
+          <h2 class="footer__heading">Tweets @rbc_dsai_iitm</h2>
+          <a class="twitter-timeline" data-height="70%" data-chrome="transparent nofooter noborders noheader noscrollbar" data-theme="dark" data-tweet-limit="1"
+            href="https://twitter.com/rbc_dsai_iitm?ref_src=twsrc%5Etfw">Tweets by rbc_dsai_iitm</a>
+          <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="footer__bottom">
+    <p class="footer__bottom-copy">{{ .Site.Params.copyright | markdownify }}</p>
+  </div>
+</footer>
+<!-- /footer -->
+<a href="#" class="back-to-top">
+  <i class="fa fa-chevron-up"></i>
+</a>
+
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"
+  integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg=="
+  crossorigin="anonymous"></script>
+
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
+    integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
+  integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.min.js"
+  integrity="sha512-0QbL0ph8Tc8g5bLhfVzSqxe9GERORsKhIn1IrpxDAgUsbBGz/V7iSav2zzW325XGd1OMLdL4UiqRJj702IeqnQ=="
+  crossorigin="anonymous"></script>
+
+<script src="https://unpkg.com/isotope-layout@3/dist/isotope.pkgd.min.js"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/venobox/1.9.1/venobox.min.js"
+  integrity="sha512-6mm1Gra+9mSztlk6Q45F1soEHmkduyd2ponCIWNo5pr0lgcr8d79GQjQ3Nw0uRR3/+y/OZGklAi38yE1QSNpCw=="
+  crossorigin="anonymous"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/wow/1.1.2/wow.min.js"
+  integrity="sha512-Eak/29OTpb36LLo2r47IpVzPBLXnAMPAVypbSZiZ4Qkf8p/7S/XRG5xp7OKWPPYfJT6metI+IORkR5G8F900+g=="
+  crossorigin="anonymous"></script>
+
+<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.imagesloaded/4.1.4/imagesloaded.pkgd.min.js"
+  integrity="sha512-S5PZ9GxJZO16tT9r3WJp/Safn31eu8uWrzglMahDT4dsmgqWonRY9grk3j+3tfuPr9WJNsfooOR7Gi7HL5W2jw=="
+  crossorigin="anonymous"></script> -->
+
+  <script src="https://unpkg.com/imagesloaded@4/imagesloaded.pkgd.min.js"></script>
+
+<script async src="https://badge.dimensions.ai/badge.js" charset="utf-8"></script>
+<script type="text/javascript" src="https://d1bxh8uas1mnw7.cloudfront.net/assets/embed.js"></script>
+
+{{ $more := resources.Get "js/showMore.min.js"  }}
+<script src="{{$more.Permalink}}"></script>
+
+{{ $main := resources.Get "js/main.js" | minify }}
+<script src="{{$main.Permalink}}"></script>

@@ -1,0 +1,32 @@
+{{ define "main" }}
+<section class="section-hero-blogs hero hero--blogs">
+  <div class="hero-breadcrumb">
+    <ul class="hero-breadcrumb-list">
+      <li>
+        <a href="{{ `/` | absURL }}"><i class="fas fa-home"></i></a>
+      </li>
+      <li>
+        <a href="{{ `/blogs/` | absURL }}"><i class="fas fa-blog"></i> Blogs</a>
+      </li>
+    </ul>
+  </div>
+</section>
+<section class="section-page-blogs mb-5">
+  <div class="container-fluid">
+    <div class="row justify-content-center">
+      <div class="col-md-7 mt-5">
+        <div class="row">
+          {{ range .Pages}}
+          <div class="col-md-12">
+          {{ partial "cards/blogs.html" .}}
+          </div>
+          {{ end }}
+        </div>
+      </div>
+      <div class="col-md-4 mt-5">
+        {{ partial "blog-sidebar.html" .}}      
+      </div>
+    </div>
+  </div>
+</section>
+{{ end }}

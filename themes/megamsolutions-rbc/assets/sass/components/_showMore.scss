@@ -1,0 +1,17 @@
+.show-more-btn {
+  margin: auto;
+  cursor: pointer;
+  color: $color-card-4;
+  white-space: nowrap;
+  transition: all 0.3s ease;
+  opacity: 1;
+
+  &:hover {
+    color: $color-card-4-light;
+  }
+}
+
+.hidden {
+  display: none;
+  opacity: 0;
+}

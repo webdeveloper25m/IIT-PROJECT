@@ -1,0 +1,25 @@
+.section-page-teaching-single {
+  .icons {
+    text-align: center;
+    font-size: 2rem;
+    margin-bottom: 1rem;
+  }
+  i {
+    padding: 1rem;
+  }
+  p {
+    margin-top: 1rem;
+    font-size: 1.3rem;
+    text-align: justify;
+  }
+  a {
+    color: inherit;
+  }
+  &__img {
+    height: 30rem;
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+  }
+
+}

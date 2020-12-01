@@ -1,0 +1,31 @@
+{{ define "main" }}
+<section class="section-hero-{{.Title | urlize}} hero hero--{{.Title | urlize}}">
+  <div class="hero-text">
+    <p>{{.Summary}}</p>
+  </div>
+  <div class="hero-breadcrumb">
+    <ul class="hero-breadcrumb-list">
+      <li>
+        <a href="{{ `/` | absURL }}"><i class="fas fa-home"></i></a>
+      </li>
+      <li>
+        <a href="{{ .Title | urlize | absURL }}"><i class="{{.Params.icon}}"></i> {{ .Title }}</a>
+      </li>
+    </ul>
+  </div>
+</section>
+<section class="section-page-{{.Title | urlize}}">
+  <div class="container-fluid mb-5">
+    <div class="text-center">
+      <h2 class="heading-secondary u-margin-top-small u-margin-bottom-small">
+        {{ .Title }}
+      </h2>
+    </div>
+    <div class="row justify-content-center">
+      <div class="col-10">
+        {{.Content}}
+      </div>
+    </div>
+  </div>
+</section>
+{{ end }}

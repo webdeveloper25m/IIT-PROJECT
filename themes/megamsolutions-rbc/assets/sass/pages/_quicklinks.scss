@@ -1,0 +1,40 @@
+.quick-links-content {
+  p {
+    font-size: 1.7rem;
+    font-weight: 500;
+  }
+  .quick-links {
+    color: $color-grey-dark-3;
+    font-size: 2rem;
+    font-weight: 700;
+    display: inline-block;
+    border: 1px solid $color-grey-light-2;
+    padding: 1.5rem 2rem;
+    width: 98%;
+    margin: 1rem;
+
+    i {
+      margin-right: 0.75rem;
+      vertical-align: middle;
+    }
+
+    a {
+      color: inherit;
+    }
+  }
+}
+
+.links {
+    color: $color-grey-dark-3;
+    font-size: 2rem;
+    font-weight: 700;
+    display: inline-block;
+    border: 1px solid $color-grey-light-2;
+    padding: 1.5rem 2rem;
+    width: 98%;
+    margin: 1rem;
+
+    a {
+      color: inherit;
+    }
+  }

@@ -1,0 +1,33 @@
+.research-single-page {
+  &__img {
+    height: 50rem;
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+  }
+}
+
+.research-single {
+  font-size: 1.2rem;
+
+  &-date {
+    font-size: 1.3rem;
+  }
+
+  &-icons {
+    color: $color-card-3;
+    font-size: 1.2rem;
+    i {
+      vertical-align: middle;
+      font-size: 1.4rem;
+      padding-right: 0.5rem;
+    }
+    a {
+      color: inherit;
+    }
+  }
+  &-tag {
+    color: inherit;
+    font-size: 1.2rem;
+  }
+}

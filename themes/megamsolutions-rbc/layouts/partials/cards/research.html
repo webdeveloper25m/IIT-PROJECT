@@ -1,0 +1,46 @@
+<div class="card card__research {{.class}} ">
+  {{with .context}}
+    <a href="{{ .Permalink }}"><img src="/images/research/{{.Params.image}}" alt="{{.Title}}" loading="lazy"
+        class="card-img-top card__research-img" /></a>
+    {{if eq .Params.categories "projects"}}
+    <div class="card__research-icons">
+      <i class="fas fa-user-tie"></i>
+      {{$printed := false}}
+      {{range $key, $value := .Params.authors }}
+      {{if lt $key 3}}
+      {{$file := printf "people/%s.md" ($value | urlize)}}
+      {{ if $key }},{{ end }}
+      {{with site.GetPage $file}}
+      <a href="{{.Permalink}}"><span class="authors">{{$value}}</span></a>
+      {{else}}
+      <span class="authors">{{$value}}</span>
+      {{end}}
+      {{else}}
+      {{if not $printed}}
+      <span>and more</span>
+      {{$printed = true}}
+      {{end}}
+      {{end}}
+      {{end}}
+    </div>
+    {{end}}
+    <div class="card-body">
+      <a href="{{ .Permalink }}">
+        <h5 class="card-title card__research-header">{{.Title}}</h5>
+      </a>
+    </div>
+    <div class="card__research-icons">
+      {{with .Params.tags}}
+      <i class="fas fa-tags"></i>
+      {{range $key, $value := . }}
+      <a href="/tags/{{ $value | urlize}}" class="tag-link">{{ $value  }}</a>
+      {{end}}
+      {{end}}
+    </div>
+    <div class="card-footer">
+      <div class="card__news-cta">
+        <a class="btn-text btn-text--small" href="{{ .Permalink }}">Read &rarr;</a>
+      </div>
+    </div>
+  {{end}}
+</div>

@@ -1,0 +1,60 @@
+{{ define "main" }}
+<section class="section-hero-teaching hero hero--teaching">
+  <div class="hero-breadcrumb">
+    <ul class="hero-breadcrumb-list">
+      <li>
+        <a href="{{ `/` | absURL }}"><i class="fas fa-home"></i></a>
+      </li>
+      <li>
+        <a href="{{ `/teaching/` | absURL }}"><i class="fas fa-chalkboard-teacher"></i> Teaching</a>
+      </li>
+      <li>
+        <a href="#">{{.Title | truncate 80}}</a>
+      </li>
+    </ul>
+  </div>
+</section>
+<section class="section-page-teaching-single mb-5">
+  <div class="container">
+    <div class="text-center">
+      <h2 class="heading-secondary u-margin-top-small u-margin-bottom-small">
+        {{$title := .Title}}
+        {{with .Params.num}}
+          {{$title = print . ":" $title}}
+        {{end}}
+        {{with .Params.link}}
+         <a href="{{.}}">{{$title}}</a>
+        {{else}}
+          {{$title}}
+        {{end}}
+      </h2>
+    </div>
+    <div class="icons">
+      <i class="fas fa-user-tie"></i>
+    {{range $key, $value := .Params.authors }}
+    {{ if $key }}, {{ end }}
+    {{$file := printf "people/%s.md" ($value | urlize)}}
+    {{with $.Site.GetPage $file}}
+    <a href="{{.Permalink}}"><span>{{$value}}</span></a>
+    {{else}}
+    <span>{{$value}}</span>
+    {{end}}
+    {{end}}
+    </div>
+    <!-- <div class="icons">
+    {{with .Params.link}}
+    <a href="{{.}}">Course Link</a>
+    {{end}}
+    </div> -->
+    <div class="row justify-content-center">
+      <div class="col-md-7 section-page-teaching-single__img" style="background-image: url(/images/teaching/{{.Params.image}});">
+      </div>
+      <div class="col-md-8">
+        <p>
+          {{.Params.description}}
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+{{end}}

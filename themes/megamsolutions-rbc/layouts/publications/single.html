@@ -1,0 +1,76 @@
+{{ define "main" }}
+<section class="section-hero-publications hero hero--publications mb-5">
+  <div class="hero-breadcrumb">
+    <ul class="hero-breadcrumb-list">
+      <li>
+        <a href="{{ `/` | absURL }}"><i class="fas fa-home"></i></a>
+      </li>
+      <li>
+        <a href="{{ `/home/research/` | absURL }}"><i class="fas fa-vial"></i> Research</a>
+      </li>
+      <li>
+        <a href="{{ `/publications/` | absURL }}"><i class="fas fa-file-alt"></i> Publications</a>
+      </li>
+      <li>
+        <a href="#">{{.Title | truncate 50}}</a>
+      </li>
+    </ul>
+  </div>
+</section>
+<section class="section-page-publications mb-5">
+  <div class="container publications-single">
+    <div class="text-center">
+      <h2 class="heading-single-page u-margin-top-small u-margin-bottom-small">
+        {{.Title}}
+      </h2>
+      <div class="publications-single-imglink">
+        <a href="{{.Params.doi}}"><img src="/images/publications/doi.svg" alt="doi link"></a>
+        {{with .Params.pubmed}}
+        <a href="{{.}}"><img src="/images/publications/pubmed.svg" alt="pubmed link"></a>
+        {{end}}
+      </div>
+      <div class="publications-single-icons">
+        <i class="fas fa-book"></i>
+        <span>Published in "{{.Params.publishedon}}"</span>
+      </div>
+      <div class="publications-single-icons">
+        <i class="fas fa-user-tie"></i>
+        {{range $key, $value := .Params.authors }}
+        {{ if $key }}, {{ end }}
+        {{$file := printf "people/%s.md" ($value | urlize)}}
+        {{with $.Site.GetPage $file}}
+        <a href="{{.Permalink}}"><span>{{$value}}</span></a>
+        {{else}}
+        <span>{{$value}}</span>
+        {{end}}
+        {{end}}
+      </div>
+      <div class="publications-single-icons">
+        {{with .Params.tags}}
+        <i class="fas fa-tags"></i>
+        {{range $key, $value := . }}
+        {{ if $key }}, {{ end }}
+        <a href="/tags/{{ $value | urlize}}" class="publications-single-tag">{{ $value  }}</a>
+        {{end}}
+        {{end}}
+      </div>
+
+    </div>
+    {{with .Params.altmetric}}
+    <div class="publications-single-badge1 altmetric-embed" data-badge-popover="left" data-badge-type="donut"
+      data-altmetric-id="{{.}}"></div>
+    {{end}}
+    {{with .Params.dimension}}
+    <div class="publications-single-badge2 __dimensions_badge_embed__" data-hide-zero-citations="true"
+      data-style="small_circle" data-id="{{.}}"></div>
+    {{end}}
+    <div class="row justify-content-center">
+      <div class="col-md-8 publications-single-page__img"
+        style="background-image: url(/images/publications/{{.Params.image}});"></div>
+      <article class="col-md-8 content-text text-justify">
+        {{ .Content }}
+      </article>
+    </div>
+  </div>
+</section>
+{{end}}

@@ -1,0 +1,282 @@
+.hero {
+  width: 100%;
+  height: 25vh;
+  position: relative;
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  &-text {
+    color: $color-grey-light-1;
+    font-size: 1.45rem;
+    font-weight: 300;
+    text-align: center;
+    width: 80%;
+    margin-bottom: 1.2rem;
+    a {
+      color: inherit;
+    }
+  }
+
+  &-breadcrumb {
+    text-align: center;
+    font-size: 1.4rem;
+    font-weight: 400;
+    color: $color-grey-light-1;
+    backface-visibility: hidden;
+    width: 100%;
+
+    &-list {
+      list-style: none;
+      display: inline-block;
+
+      li {
+        float: left;
+        a {
+          color: inherit;
+          display: block;
+          background-color: $color-breadcrumb;
+          text-decoration: none;
+          text-align: center;
+          padding: 0.75rem 1rem;
+          margin-right: 4rem;
+          position: relative;
+          line-height: 3rem;
+
+          i {
+            padding-right: 0.4rem;
+          }
+
+          &:before,
+          &:after {
+            content: '';
+            position: absolute;
+            top: 0;
+            border: 1px solid $color-breadcrumb;
+            border-width: 2.25rem 1.6rem;
+            width: 0;
+            height: 0;
+            backface-visibility: hidden;
+          }
+
+          &:before {
+            left: -3.2rem;
+            border-left-color: transparent;
+          }
+          &:after {
+            left: 100%;
+            border-color: transparent;
+            border-left-color: $color-breadcrumb;
+          }
+          &:hover {
+            background-color: $color-breadcrumb-light;
+            &:before {
+              border-color: $color-breadcrumb-light;
+              border-left-color: transparent;
+            }
+            &:after {
+              border-left-color: $color-breadcrumb-light;
+            }
+          }
+        }
+        &:first-child {
+          a {
+            padding-left: 1rem;
+            border-radius: 1rem 0 0 1rem;
+            &:before {
+              border: none;
+            }
+          }
+        }
+
+        &:last-child {
+          a {
+            padding-right: 1rem;
+            border-radius: 0 1rem 1rem 0;
+            &:after {
+              border: none;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  &--news {
+    background-image: linear-gradient(
+        to right bottom,
+        rgba($color-black, 0.5),
+        rgba($color-main, 0.6)
+      ),
+      url('/images/hero-news.jpg');
+  }
+
+  &--research {
+    background-image: linear-gradient(
+        to right bottom,
+        rgba($color-black, 0.5),
+        rgba($color-main, 0.6)
+      ),
+      url('/images/hero-research.jpg');
+  }
+
+  &--publications {
+    background-image: linear-gradient(
+        to right bottom,
+        rgba($color-black, 0.5),
+        rgba($color-main, 0.6)
+      ),
+      url('/images/hero-publications.jpg');
+  }
+
+  &--teaching {
+    background-image: linear-gradient(
+        to right bottom,
+        rgba($color-black, 0.5),
+        rgba($color-main, 0.6)
+      ),
+      url('/images/hero-teaching.jpg');
+  }
+
+  &--joinus {
+    background-image: linear-gradient(
+        to right bottom,
+        rgba($color-black, 0.5),
+        rgba($color-main, 0.6)
+      ),
+      url('/images/hero-joinus.jpg');
+  }
+
+  &--programs {
+    background-image: linear-gradient(
+        to right bottom,
+        rgba($color-black, 0.5),
+        rgba($color-main, 0.6)
+      ),
+      url('/images/hero-programs.jpg');
+  }
+
+  &--events {
+    background-image: linear-gradient(
+        to right bottom,
+        rgba($color-black, 0.5),
+        rgba($color-main, 0.6)
+      ),
+      url('/images/hero-events.jpg');
+  }
+  &--about-us {
+    background-image: linear-gradient(
+        to right bottom,
+        rgba($color-black, 0.5),
+        rgba($color-main, 0.6)
+      ),
+      url('/images/hero-about-us.jpg');
+  }
+   &--software {
+    background-image: linear-gradient(
+        to right bottom,
+        rgba($color-black, 0.5),
+        rgba($color-main, 0.6)
+      ),
+      url('/images/hero-software.jpg');
+  }
+  &--credits {
+    background-image: linear-gradient(
+        to right bottom,
+        rgba($color-black, 0.5),
+        rgba($color-main, 0.6)
+      ),
+      url('/images/hero-credits.jpg');
+  }
+  &--gallery {
+    background-image: linear-gradient(
+        to right bottom,
+        rgba($color-black, 0.5),
+        rgba($color-main, 0.6)
+      ),
+      url('/images/hero-gallery.jpg');
+  }
+  &--people {
+    background-image: linear-gradient(
+        to right bottom,
+        rgba($color-black, 0.5),
+        rgba($color-main, 0.6)
+      ),
+      url('/images/hero-people.jpg');
+  }
+  &--blogs {
+    background-image: linear-gradient(
+        to right bottom,
+        rgba($color-black, 0.5),
+        rgba($color-main, 0.6)
+      ),
+      url('/images/hero-blogs.jpg');
+  }
+  &--quicklinks {
+    background-image: linear-gradient(
+        to right bottom,
+        rgba($color-black, 0.5),
+        rgba($color-main, 0.6)
+      ),
+      url('/images/hero-quicklinks.jpg');
+  }
+  &--collaborators {
+    background-image: linear-gradient(
+        to right bottom,
+        rgba($color-black, 0.5),
+        rgba($color-main, 0.6)
+      ),
+      url('/images/hero-collaborators.jpg');
+  }
+  &--academics {
+    background-image: linear-gradient(
+        to right bottom,
+        rgba($color-black, 0.5),
+        rgba($color-main, 0.6)
+      ),
+      url('/images/hero-academics.jpg');
+  }
+  &--default {
+    background-image: linear-gradient(
+        to right bottom,
+        rgba($color-black, 0.5),
+        rgba($color-main, 0.6)
+      ),
+      url('/images/hero-default.jpg');
+  }
+  &--industry {
+    background-image: linear-gradient(
+        to right bottom,
+        rgba($color-black, 0.5),
+        rgba($color-main, 0.6)
+      ),
+      url('/images/hero-industry.jpg');
+  }
+  &--default {
+    background-image: linear-gradient(
+        to right bottom,
+        rgba($color-black, 0.5),
+        rgba($color-main, 0.6)
+      ),
+      url('/images/hero-default.jpg');
+  }
+  &--sponsored-research {
+    background-image: linear-gradient(
+        to right bottom,
+        rgba($color-black, 0.5),
+        rgba($color-main, 0.6)
+      ),
+      url('/images/hero-sponsored-research.jpg');
+  }
+  &--work-with-us {
+    background-image: linear-gradient(
+        to right bottom,
+        rgba($color-black, 0.5),
+        rgba($color-main, 0.6)
+      ),
+      url('/images/hero-work-with-us.jpg');
+  }
+}

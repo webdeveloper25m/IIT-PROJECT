@@ -1,0 +1,30 @@
+{{ define "main" }}
+<section class="section-hero-joinus hero hero--joinus">
+  <div class="hero-breadcrumb">
+    <ul class="hero-breadcrumb-list">
+      <li>
+        <a href="{{ `/` | absURL }}"><i class="fas fa-home"></i></a>
+      </li>
+      <li>
+        <a href="{{ `/join-us/` | absURL }}"><i class="fas fa-sign-in-alt"></i> Join us</a>
+      </li>
+    </ul>
+  </div>
+</section>
+<section class="section-page-joinus">
+  <div class="container">
+    <div class="text-center">
+      <h2 class="heading-secondary u-margin-top-small u-margin-bottom-small">
+        join us
+      </h2>
+    </div>
+    <div class="row">
+      {{range .Pages.ByDate}}
+      <div class="col-lg-4 col-md-6 ">
+        {{partial "cards/join-us.html" .}}
+      </div>
+      {{end}}
+    </div>
+  </div>
+</section>
+{{ end }}

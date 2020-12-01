@@ -1,0 +1,38 @@
+<div class="card card__people mx-auto">
+  <div class="row no-gutters">
+    <div class="col-6">
+      <a href="{{ .Permalink }}">
+        {{$image := .Params.image}}
+        {{with .Params.hidePhoto}}
+          {{$image = "/images/people/people-default.svg"}}
+        {{end}}
+        <img src="{{$image}}" alt="{{.Title}}" loading="lazy"
+        class="card-img-top card__people-img" /></a>
+      </div>
+    <div class="col-6">
+      <div class="card-body card__people-content">
+        <a href="{{ .Permalink }}">
+          <h5 class="card-title card__people-name">{{.Title}}</h5>
+        </a>
+        {{with .Params.roles}}
+        <div class="showmore" data-config='{ "type": "list", "limit": 2, "element": "h5", "more": " &darr; more", "less": " &uarr; less" }'>
+          {{range .}}
+          <h5 class="card-title card__people-designation">{{.}}</h5>
+          {{end}}
+        </div>
+        {{end}}
+        {{with .Params.tags}}
+        <div class="showmore"
+          data-config='{ "type": "list", "limit": 2, "element": "a", "more": " &rarr; more", "less": " &larr; less" }'>
+          {{$len := sub (len .) 1}}
+          {{range $key,$value := .}}
+          <a href="/tags/{{ . | urlize}}"><span class="card__people-tags">{{$value}}{{ if ne $key $len}},{{ end }}</span></a>
+          {{end}}
+        </div>
+        {{end}}
+      </div>
+    </div>
+  </div>
+
+
+</div>

@@ -1,0 +1,36 @@
+{{ define "main" }}
+<section class="section-hero-academics hero hero--academics">
+  <div class="hero-breadcrumb">
+    <ul class="hero-breadcrumb-list">
+      <li>
+        <a href="{{ `/` | absURL }}"><i class="fas fa-home"></i></a>
+      </li>
+      <li>
+        <a href="{{ `/home/academics/` | absURL }}"><i class="fas fa-chalkboard-teacher"></i> Academics</a>
+      </li>
+      <li>
+        <a href="#"><i class="fas fa-chalkboard-teacher"></i>{{.Title | truncate 80}}</a>
+      </li>
+    </ul>
+  </div>
+</section>
+<section class="section-page-academics-single mb-5">
+  <div class="container">
+    <div class="text-center">
+      <h2 class="heading-secondary u-margin-top-small u-margin-bottom-small">
+        {{.Title}}
+      </h2>
+    </div>
+    <div class="row justify-content-center">
+      <div class="col-md-8 section-page-academics-single__img"
+        style="background-image: url(/images/academics/{{.Params.image}});">
+      </div>
+      <div class="col-md-8 home-single-content">
+        <p>
+          {{.Content}}
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+{{end}}

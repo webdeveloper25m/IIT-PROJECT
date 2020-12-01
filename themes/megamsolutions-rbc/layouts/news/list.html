@@ -1,0 +1,209 @@
+{{ define "main" }}
+<section class="section-hero-news hero hero--news">
+  <div class="hero-breadcrumb">
+    <ul class="hero-breadcrumb-list">
+      <li>
+        <a href="{{ `/` | absURL }}"><i class="fas fa-home"></i></a>
+      </li>
+      <li>
+        <a href="{{ `/news/` | absURL }}"><i class="fas fa-newspaper"></i> News</a>
+      </li>
+    </ul>
+  </div>
+</section>
+<section class="section-page-news">
+  <div class="container-fluid">
+    <div class="text-center">
+      <h2 class="heading-secondary u-margin-top-small u-margin-bottom-small">
+        News
+      </h2>
+    </div>
+    <div class="row justify-content-center">
+    <div class="col-md-10 u-margin-bottom-small">
+      {{ $all_pages := where .Site.RegularPages "Section" "in" (slice "news" "newsletter")}}
+      {{ $years := slice}}
+      {{ $years_tags := dict}}
+      {{range $all_pages.GroupByDate "2006"}}
+        {{ $years = $years | append .Key}}
+        {{ $category_tags := dict}}
+        {{range .Pages.GroupBy "Section"}}
+          {{$temp_tags := slice}}
+          {{range .Pages}}
+            {{ range .Params.tags}}
+              {{ $temp_tags = $temp_tags | uniq | append ( . ) }}
+            {{end}}
+          {{end}}
+          {{$category_tags = merge $category_tags (dict .Key $temp_tags)}}
+        {{end}}
+        {{$years_tags = merge $years_tags (dict .Key $category_tags)}}
+      {{end}}
+      <h3 class="mb-4">Year</h3>
+      {{$checked := ""}}
+      <ul class="nav nav-pills mb-4" id="year-tab" role="tablist">
+        {{ range $key,$value := ($years | uniq ) }}
+          {{if not $key}}
+            {{$checked = "active"}}
+          {{else}}
+           {{$checked = ""}}
+          {{end}}
+          <li class="nav-item">
+            <a class="nav-link button button--medium  button--outline {{$checked}}" id="{{$value}}-tab"
+              data-toggle="pill" href="#year-{{$value}}" role="tab" aria-controls="{{$value}}">{{$value}}</a>
+          </li>
+        {{end}}
+      </ul>
+      <div class="tab-content" id="yeartabcontent">
+        {{ range $key,$yearValue := ($years | uniq ) }}
+          {{if not $key}}
+            {{$checked = "active show"}}
+          {{else}}
+            {{$checked = ""}}
+          {{end}}
+          <div class="tab-pane {{$checked}}" id="year-{{$yearValue}}" role="tabpanel">
+            <h3 class="mb-4">Category</h3>
+            {{$temp_yearValue := $yearValue}}
+            <ul class="nav nav-pills mb-4" id="cat-tab" role="tablist">
+            {{$active_set := false}}
+            {{$disabled := "disabled"}}
+            {{$checked := ""}}
+            {{ range $key,$catValue := (slice "news" "newsletter") }}
+              {{if (index (index $years_tags $temp_yearValue) $catValue)}}
+                {{$disabled = ""}}
+                {{if not $active_set}}
+                  {{$checked = "active"}}
+                  {{$active_set = true}}
+                {{else}}
+                  {{$checked = ""}}
+                {{end}}
+              {{else}}
+                {{$disabled = "disabled"}}
+                {{$checked = ""}}
+              {{end}}
+              <li class="nav-item">
+                <a class="nav-link button button--medium  button--color{{add $key 1}} {{$checked}} {{$disabled}}" id="{{$catValue}}-tab" data-toggle="pill"
+                  href="#{{$catValue}}{{$temp_yearValue}}" role="tab" aria-controls="{{$catValue}}">{{if eq $catValue "news"}}MEDIA{{else}}{{$catValue | upper}}{{end}}</a>
+              </li>
+          {{end}}
+          </ul>
+          {{$checked := ""}}
+          <div class="tab-content" id="tabcontent-{{$temp_yearValue}}">
+            <h3 class="mb-4">Tags</h3>
+            {{$active_set := false}}
+            {{$checked := ""}}
+            {{ range $key,$catValue := (slice "news"  "newsletter") }}
+              {{if and (index (index $years_tags $temp_yearValue) $catValue) (not $active_set)}}
+                {{$checked = "active show"}}
+                {{$active_set = true}}
+              {{else}}
+                {{$checked = ""}}
+              {{end}}
+              <div class="tab-pane {{$checked}}" id="{{$catValue}}{{$temp_yearValue}}" role="tabpanel">
+                <div class="filters-btn">
+                  <div class="group-btn">
+                    <div class="button-group  ml-4" role="group" data-toggle="buttons" data-filter-group="tags">
+                      <button type="button" class="button is-checked" data-filter=".{{$temp_yearValue}}.{{$catValue}}">ALL</button>
+                      {{ range (index (index $years_tags $temp_yearValue) $catValue)}}
+                      <button type="button" class="button" data-filter=".{{$temp_yearValue}}.{{$catValue}}.{{ . | urlize}}">{{ .  }}</button>
+                      {{ end }}
+                    </div>
+                  </div>
+                </div>
+              </div>
+            {{end}}
+          </div>
+        </div>
+        {{end}}
+      </div>
+    </div>
+    <div class="col-md-10 u-margin-bottom-big">
+      <div class="timeline filter vertical">
+        {{ range $all_pages }}
+          {{$class := ""}}
+          {{if eq .Section "news"}}
+            {{$class = "timeline-block--color1"}}
+          {{else if eq .Section "newsletter"}}
+            {{$class = "timeline-block--color2"}}
+          {{end}}
+          {{$groups := slice}}
+          {{range .Params.tags}}
+            {{$groups = $groups | append ( . )}}
+          {{end}}
+          <div class="timeline-block filter-item {{$class}} {{ range $groups }}{{. | urlize}} {{end}} {{.Section}} {{ dateFormat `2006` .Date }}">
+            <div class="inner-box">
+              <div class="inner">
+                <div class="date">
+                  {{ dateFormat "Jan 2" .Date }}<br>
+                  {{ dateFormat "2006" .Date }}<br>
+                </div>
+                {{if eq .Section "news"}}
+                  {{$link := .Permalink}}
+                {{with .Params.link}}
+                  {{$link = .}}
+                {{end}}
+                <h4><a href="{{$link}}">{{.Title}}</a></h4>
+                <div class="icon">
+                  <i class="fas fa-newspaper"></i>
+                  <span>{{.Params.newsprovider}}</span>
+                </div>
+                <div class="text">{{.Summary | truncate 160}}</div>
+                <div class="icon">
+                  {{with .Params.tags}}
+                    <i class="fas fa-tags"></i>
+                    {{range $key, $value := . }}
+                      <a href="/tags/{{ $value | urlize}}" class="tag-link">{{ $value }}</a>
+                    {{end}}
+                  {{end}}
+                </div>
+                <div class="btn-box">
+                  <a href="{{$link}}">Read More</a>
+                </div>
+                {{else if eq .Section "events"}}
+                  {{$link := .Permalink}}
+                  {{with .Params.link}}
+                    {{$link = .}}
+                  {{end}}
+                  <h4><a href="{{$link}}">{{.Title}}</a></h4>
+                  <div class="icon">
+                    {{$date := .Date}}
+                    {{with .Params.dateTo}}
+                      <i class="fas fa-calendar-week"></i><span>{{ dateFormat "January 2" $date }} to {{ dateFormat "January 2" . }}</span>
+                    {{end}}
+                    <i class="far fa-clock"></i><span>{{.Params.time}}</span>
+                  </div>
+                  <div class="icon"><i class="fas fa-map-marker-alt"></i></i><span>{{.Params.venue}}</span></div>
+                  <div class="icon">
+                    {{with .Params.tags}}
+                      <i class="fas fa-tags"></i>
+                      {{range $key, $value := . }}
+                      <a href="/tags/{{ $value | urlize}}" class="tag-link">{{ $value }}</a>
+                      {{end}}
+                    {{end}}
+                  </div>
+                  <div class="btn-box">
+                    <a href="{{$link}}">Read More</a>
+                  </div>
+                {{else if eq .Section "newsletter"}}
+                  <h4><a href="{{.Params.link | absURL}}">{{.Title}}</a></h4>
+                  <div class="icon"><i class="fas fa-book-open"></i><span>Quartely Newsletter</span></div>
+                  <div class="icon">
+                    {{with .Params.tags}}
+                      <i class="fas fa-tags"></i>
+                      {{range $key, $value := . }}
+                        <a href="/tags/{{ $value | urlize}}" class="tag-link">{{ $value }}</a>
+                      {{end}}
+                    {{end}}
+                  </div>
+                  <div class="btn-box">
+                    <a href="{{.Params.link | absURL}}">Read More</a>
+                  </div>
+                {{end}}
+              </div>
+            </div>
+          </div>
+        {{end}}
+      </div>
+    </div>
+    </div>
+  </div>
+</section>
+{{ end }}

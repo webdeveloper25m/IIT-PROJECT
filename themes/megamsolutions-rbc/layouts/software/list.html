@@ -1,0 +1,38 @@
+{{ define "main" }}
+<section class="section-hero-software hero hero--software">
+  <div class="hero-breadcrumb">
+    <ul class="hero-breadcrumb-list">
+      <li>
+        <a href="{{ `/` | absURL }}"><i class="fas fa-home"></i></a>
+      </li>
+      <li>
+        <a href="{{ `/home/research/` | absURL }}"><i class="fas fa-vial"></i> Research</a>
+      </li>
+      <li>
+        <a href="{{ `/software/` | absURL }}"><i class="far fa-keyboard"></i> Software</a>
+      </li>
+    </ul>
+  </div>
+</section>
+<section class="section-page-programs mb-5">
+  <div class="container-fluid">
+    <div class="text-center">
+      <h2 class="heading-secondary u-margin-top-small u-margin-bottom-small">
+        Software
+      </h2>
+    </div>
+    <div class="row justify-content-center">
+      {{ range .Pages.ByDate}}
+      <div class="col-md-3">
+        <div class="card card__software">
+          <a href="{{ .Params.link }}"><img src="{{.Params.image}}" alt="" class="card-img-top card__software-img" /></a>
+          <div class="card-body">
+            <a href="{{ .Params.link }}"><h5 class="card-title card__software-header">{{.Title}}</h5></a>
+          </div>
+        </div>
+      </div>
+      {{ end }}
+    </div>
+  </div>
+</section>
+{{ end }}

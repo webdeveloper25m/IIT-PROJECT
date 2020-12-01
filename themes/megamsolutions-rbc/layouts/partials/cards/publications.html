@@ -1,0 +1,60 @@
+<div class="card card__publications {{.class}} ">
+  {{with .context}}
+    <div class="row no-gutters">
+      <div class="col-sm-2 card__publications-img-box">
+        <a href="{{ .Permalink }}">
+          <img src="/images/publications/{{.Params.image}}" loading="lazy" alt="{{.Title}}" class="card__publications-img" />
+        </a>
+      </div>
+      <div class="col">
+        <div class="card-header">
+          <a href="{{ .Permalink }}">
+            <h5 class="card-title card__publications-header">{{.Title}}</h5>
+          </a>
+        </div>
+          <div class="card__publications-icons">
+            <i class="fas fa-user-tie"></i>
+            {{$printed := false}}
+            {{range $key, $value := .Params.authors }}
+            {{if lt $key 3}}
+            {{ if $key }},{{ end }}
+            {{$file := printf "people/%s.md" ($value | urlize)}}
+            {{with site.GetPage $file}}
+            <a href="{{.Permalink}}"><span class="authors">{{$value}}</span></a>
+            {{else}}
+            <span class="authors">{{$value}}</span>
+            {{end}}
+            {{else}}
+            {{if not $printed}}
+            <span class="authors">and more</span>
+            {{$printed = true}}
+            {{end}}
+            {{end}}
+            {{end}}
+          </div>
+          <div class="card__publications-icons">
+            <i class="fas fa-book"></i>
+            <a href="{{.Params.doi}}"><span>{{.Params.publishedon}}</span></a>
+          </div>
+          <!-- <div class="card__publications-icons">
+            {{with .Params.tags}}
+            <i class="fas fa-tags"></i>
+            {{range $key, $value := . }}
+            <a href="/tags/{{ $value | urlize}}" class="tag-link">{{ $value  }}</a>
+            {{end}}
+            {{end}}
+          </div> -->
+      </div>
+      <div class="col-sm-2 card__publications-badge">
+        {{with .Params.altmetric}}
+        <div class="card__publications-badge1 altmetric-embed" data-badge-popover="left" data-badge-type="donut"
+          data-altmetric-id="{{.}}"></div>
+        {{end}}
+        {{with .Params.dimension}}
+        <span class="card__publications-badge2 __dimensions_badge_embed__" data-hide-zero-citations="true" data-badge-popover="right"
+          data-style="small_circle" data-id="{{.}}"></span>
+        {{end}}
+      </div>
+    </div>
+  {{end}}
+</div>

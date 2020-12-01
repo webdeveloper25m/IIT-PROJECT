@@ -1,0 +1,25 @@
+<div class="topbar">
+  <div class="topbar-nav">
+    <div class="topbar__logo">
+      <a href="https://www.iitm.ac.in/" target="_blank"><img src="{{ .Site.Params.iitm_logo | absURL }}" class="" alt="IITM Logo"></a>
+      <a href="https://ibse.iitm.ac.in/"><img src="{{ .Site.Params.ibse_logo | absURL }}" class="" alt="IBSE Logo"></a>
+    </div>
+    <div class="topbar-nav-items">
+      <span class="heading">Quick Links</span>
+      {{range (where site.RegularPages "Section" "quicklinks")}}
+      <a class="nav-item" href="{{.Permalink | absURL}}">{{.Title}}</a>
+      {{end}}
+      <a class="nav-item" href="/upcoming/">Upcoming Events</a>
+      <a class="nav-item" href="#footer">Contact</a>
+    </div>
+    <div class="topbar__social-icons">
+      <a href="https://twitter.com/rbc_dsai_iitm" class="social-link"><i class="fab fa-twitter"></i></a>
+      <a href="https://www.linkedin.com/company/rbcdsai/" class="social-link"><i class="fab fa-linkedin-in"></i></a>
+      <a href="https://www.facebook.com/rbcdsai" class="social-link"><i class="fab fa-facebook-f"></i></a>
+      <a href="https://www.instagram.com/rbcdsai/" class="social-link"><i class="fab fa-instagram"></i></a>
+      <a href=" https://www.youtube.com/channel/UCKaYqGvmULmTrN0PH5YPFcA  " class="social-link"><i
+          class="fab fa-youtube"></i></a>
+    </div>
+  </div>
+
+</div>

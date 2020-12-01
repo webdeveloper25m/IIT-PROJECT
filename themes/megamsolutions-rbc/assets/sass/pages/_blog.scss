@@ -1,0 +1,247 @@
+.section-page-blogs-single,
+.section-page-blogs {
+  font-family: 'Open Sans', sans-serif;
+}
+
+.blogs-single {
+  color: $color-font-primary-dark;
+
+  &-icons {
+    color: $color-card-3;
+    font-size: 1.2rem;
+    margin-bottom: 1rem;
+    i {
+      vertical-align: middle;
+      font-size: 1.4rem;
+      padding-right: 0.5rem;
+    }
+    span {
+      color: $color-card-3;
+    }
+  }
+
+  &-img {
+    height: 50rem;
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+  }
+
+  &-tag {
+    color: inherit;
+    font-size: 1.2rem;
+  }
+
+  p {
+    color: $color-font-primary;
+    font-size: 1.5rem;
+    padding: 0.5rem;
+    display: block;
+  }
+
+  article {
+    font-size: 1.4rem;
+  }
+
+  &-text {
+    font-size: 1.3rem;
+    margin-bottom: 1rem;
+  }
+
+  ul,
+  ol {
+    padding: 0.5rem 3rem;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    margin: 1rem 0;
+  }
+
+  h1 {
+    font-size: 300%;
+    font-weight: 400;
+    text-transform: uppercase;
+  }
+  h2 {
+    font-size: 200%;
+  }
+  h3 {
+    font-size: 185%;
+  }
+  h4 {
+    font-size: 160%;
+  }
+  h5 {
+    font-size: 150%;
+  }
+  h6 {
+    font-size: 100%;
+  }
+
+  a {
+    color: $color-card-3;
+  }
+
+  blockquote {
+    margin: 2rem auto;
+    quotes: '\00AB''\00BB''\201E''\201C';
+    background-color: $color-grey-light-2;
+    padding: 1rem 1.5rem;
+    border-left: 0.3rem solid $color-card-3;
+  }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    background: $color-card-1-light;
+    // border-style: hidden
+    margin-bottom: 1.5rem;
+    &:not(.ln-table) t {
+      background: $color-grey-light-1;
+    }
+  }
+
+  td,
+  th {
+    padding: 0.5rem 1rem;
+    border: 1px solid $color-card-1-light;
+  }
+
+  td,
+  th {
+    padding: 0.5rem 1rem;
+    font-weight: 400;
+    &:not(:first-child) {
+      padding-left: 1.5rem;
+    }
+  }
+
+  th {
+    font-weight: 700;
+  }
+
+  tbody {
+    padding: 0;
+    tr {
+      &:nth-child(even) {
+        background-color: $color-grey-light-2;
+      }
+      &:nth-child(odd) {
+        background-color: $color-grey-light-1;
+      }
+    }
+  }
+
+  img {
+    max-width: 100%;
+    height: auto;
+  }
+
+  .highlight {
+    pre {
+      background-color: $color-code-bg !important;
+      // border-radius: 1rem;
+      padding: 1rem;
+    }
+  }
+}
+
+.blog-sidebar {
+  margin-top: 4rem;
+
+  ul {
+    list-style: none;
+    margin-left: 1rem;
+  }
+
+  .blog-categories-link {
+    display: inline-block;
+    color: inherit;
+    padding: 0.5rem 0;
+  }
+
+  .blog-categories-link i {
+    margin-right: 0.25rem;
+  }
+
+  .blog-tags {
+    margin: 1rem 0;
+  }
+
+  .blog-tags-link {
+    display: inline-block;
+    color: inherit;
+    background-color: rgba($color-card-3-light, 0.8);
+    border-radius: 3rem;
+    color: $color-grey-light-1;
+    padding: 0.3rem 1rem;
+    margin-bottom: 0.5rem;
+    font-size: 1.4rem;
+  }
+
+  li {
+    font-size: 1.5rem;
+    margin: 0.5rem 0;
+  }
+
+  .badge {
+    margin-left: 0.25rem;
+    background: $color-card-3;
+  }
+
+  .recent-posts {
+    .recent-single-post {
+      display: block;
+      overflow: hidden;
+      padding: 0.5rem 0;
+      transition: all 0.3s;
+      border-radius: 0.5rem;
+
+      .post-img {
+        display: inline-block;
+        float: left;
+        padding: 1rem;
+
+        img {
+          border-radius: 1rem;
+          overflow: hidden;
+          height: 6rem;
+          max-width: 6rem;
+          width: 100%;
+          opacity: 0.8;
+        }
+      }
+      .post-content {
+        padding: 1rem;
+        padding-left: 8rem;
+        a {
+          color: inherit;
+        }
+        p {
+          font-size: 1.4rem;
+          margin-bottom: 0.5rem;
+        }
+      }
+
+      &:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 1.5rem 4rem rgba($color-black, 0.15);
+        img {
+          opacity: 1;
+        }
+      }
+    }
+  }
+}
+
+.blog-related {
+  a {
+    font-size: 1.4rem;
+    color: $color-card-3;
+  }
+}

@@ -1,0 +1,32 @@
+{{ define "main" }}
+<section class="section-hero-event hero hero--events">
+  <div class="hero-breadcrumb">
+    <ul class="hero-breadcrumb-list">
+      <li>
+        <a href="{{ `/` | absURL }}"><i class="fas fa-home"></i></a>
+      </li>
+      <li>
+        <a href="{{ `/news/` | absURL }}"><i class="fas fa-calendar-day"></i>Events</a>
+      </li>
+      <li>
+        <a href="#">{{.Title}}</a>
+      </li>
+    </ul>
+  </div>
+</section>
+<section class="section-page-events mb-5">
+  <div class="container">
+    <div class="row  justify-content-center">
+    <div class="text-center">
+      <h2 class="heading-secondary u-margin-top-medium u-margin-bottom-medium">
+        {{.Title}}
+      </h2>
+    </div>
+    <div class="col-md-10">
+      {{.Content}}
+    </div>
+    </div>
+   </div>
+</section>
+
+{{ end }}

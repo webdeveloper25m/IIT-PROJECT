@@ -1,0 +1,14 @@
+<div class="card card__joinus">
+  <a href="{{ .Permalink }}"><img src="/images/join-us/{{.Params.image}}" loading="lazy" alt="{{.Title}}"
+      class="card-img-top card__joinus-img" /></a>
+  <div class="card-body">
+    <a href="{{ .Permalink }}">
+      <h5 class="card-title card__joinus-header">{{.Title}}</h5>
+    </a>
+  </div>
+  <div class="card-footer">
+    <div class="card__joinus-cta">
+      <a class="btn-text btn-text--small" href="{{ .Permalink }}">Know more &rarr;</a>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,11 @@
+---
+title: "Rate of Change Analysis for Interestingness Measures"
+date: 2019-06-20
+authors: ["Nandan Sudarsanam", "Nishanth Kumar", "B Ravindran"]
+tags: ["machine learning", "databases"]
+doi: "https://doi.org/10.1007/s10115-019-01352-3"
+publishedon: "Knowledge and Information Systems (KAIS) Journal, Springer"
+image: "Rate-of-Change-Analysis-for-Interestingness-Measures.png"
+draft: false
+---
+The use of Association Rule Mining techniques in diverse contexts and domains has resulted in the creation of numerous interestingness measures. This, in turn, has motivated researchers to come up with various classification schemes for these measures. One popular approach to classify the objective measures is to assess the set of mathematical properties they satisfy in order to help practitioners select the right measure for a given problem. In this research, we discuss the insufficiency of the existing properties in literature to capture certain behaviors of interestingness measures. This motivates us to present a novel approach to analyze and classify measures. We refer to this as a rate of change analysis (RCA). In this analysis a measure is described by how it varies if there is a unit change in the frequency count (f11,f10,f01,f00), for different pre-existing states of the frequency counts. More formally, we look at the first partial derivative of the measure with respect to the various frequency count variables. We then use this analysis to define two new properties, Unit-Null Asymptotic Invariance (UNAI) and Unit-Null Zero Rate (UNZR). UNAI looks at the asymptotic effect of adding frequency patterns, while UNZR looks at the initial effect of adding frequency patterns when they do not pre-exist in the dataset. We present a comprehensive analysis of 50 interestingness measures and classify them in accordance with the two properties. We also present empirical studies, involving both synthetic and real-world datasets, which are used to cluster various measures according to the rule ranking patterns of the measures. The study concludes with the observation that classification of measures using the empirical clusters share significant similarities to the classification of measures done through the properties presented in this research

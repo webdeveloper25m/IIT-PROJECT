@@ -1,0 +1,147 @@
+.preloader {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #fff;
+  z-index: 999999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.hero-section {
+  // margin-top: 4rem;
+  background-image: linear-gradient(to top,
+      rgba($color-main, 0.9),
+      rgba($color-main, 0.7)
+    ),
+    url('../images/hero-5.jpg');
+  background-size: cover;
+  background-position: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.section-news-event,
+.section-page-news{
+  background-color: $color-grey-light-1;
+}
+
+.section-links {
+  .links {
+    &-list {
+      list-style: none;
+      font-size: 1.4rem;
+      font-weight: 700;
+      color: $color-grey-dark-2;
+      ul {
+        margin-left: 2rem;
+      }
+    }
+
+    &-link {
+      margin: 0.5rem 0;
+      i {
+        padding: 0.5rem;
+      }
+    }
+
+    &-link a {
+      display: inline-block;
+      transition: all 0.3s ease;
+      &:link,
+      &:visited {
+        text-decoration: none;
+        color: $color-font-primary;
+        // border-bottom: 1px solid $color-font-primary;
+      }
+
+      &:hover {
+        background-color: $color-font-primary;
+        color: $color-grey-light-1;
+        transform: translateY(-2px);
+      }
+    }
+  }
+}
+
+.section-announcements {
+  .announcements {
+    padding: 4.5rem 1rem;
+    background-color: $color-main-light;
+    border-radius: 0.7rem;
+
+    &__header {
+      text-align: center;
+      margin: auto 0;
+      h2 {
+        color: $color-grey-light-1;
+        font-size: 2.6rem;
+        font-weight: 200;
+        text-transform: uppercase;
+      }
+    }
+
+    &__link {
+      display: inline-block;
+      position: absolute;
+      width: 10rem;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      font-size: 1.3rem;
+      line-height: 1.5;
+      font-weight: 500;
+      text-decoration: none;
+      color: $color-grey-light-1;
+    }
+
+    &__prev,
+    &__next {
+      position: absolute;
+      cursor: pointer;
+      top: 50%;
+      transform: translateY(-50%);
+      border: none;
+      width: 3rem;
+      height: 3rem;
+      border-radius: 50%;
+      transition: all 0.3s linear;
+      i {
+        padding: 0.4rem 0.5rem;
+        font-size: 1.3rem;
+      }
+
+      &:hover {
+        background-color: $color-primary;
+        color: $color-grey-light-1;
+      }
+    }
+    &__prev {
+      right: auto;
+      left: -5rem;
+    }
+
+    &__next {
+      left: auto;
+      right: -5rem;
+    }
+  }
+}
+.section-collaborators {
+  background-color: $color-grey-light-1;
+  .collab-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+}
+
+.home-single-content {
+  font-family: 'Open Sans', sans-serif;
+  font-size: 1.5rem;
+  line-height: 2.4rem;
+}

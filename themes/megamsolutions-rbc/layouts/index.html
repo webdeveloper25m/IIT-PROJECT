@@ -1,0 +1,232 @@
+{{ define "main" }}
+
+<section class="hero-section overflow-hidden">
+  {{ with .Site.Data.homepage.hero }}
+    <div class="carousel slide" id="hero-slider" data-ride="carousel" data-interval="20000">
+      <ol class="carousel-indicators">
+        {{ range $key, $value := .slides }}
+        <li data-target="#hero-slider" data-slide-to="{{$key}}" class=""></li>
+        {{end}}
+      </ol>
+      <div class="carousel-inner">
+        {{$checked := ""}}
+        {{$slides := shuffle .slides}}
+        {{ range $key, $value := $slides}}
+          {{$image_link := "transparent"}}
+          {{$gradient1 := "transparent"}}
+          {{$gradient2 := "transparent"}}
+          {{with .image}}
+            {{$image_link = .}}
+            {{$gradient1 = "34, 34, 34, 0.6"}}
+            {{$gradient2 = "34, 34, 34, 0.6"}}
+          {{end}}
+          <div class="carousel-item" style="background-image: linear-gradient(to top, rgba({{$gradient1}}), rgba({{$gradient2}})), url({{$image_link}})">
+            <div class="hero__carousel">
+              <div class="hero__carousel-title">{{.title}}</div>
+              <div class="hero__carousel-text">
+                {{.description}}
+              </div>
+              <a href="{{.link}}" class="btn btn--red btn--animated">Know More</a>
+            </div>
+          </div>
+        {{ end }}
+      </div>
+      <a class="carousel-control-prev" href="#hero-slider" role="button" data-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="sr-only">Previous</span>
+      </a>
+      <a class="carousel-control-next" href="#hero-slider" role="button" data-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="sr-only">Next</span>
+      </a>
+    </div>
+  {{ end }}
+</section>
+<section class="section-news-event u-margin-bottom-small">
+  <div class="container-fluid">
+    <div class="row justify-content-center">
+      <div class="col-8">
+        <div class="mb-4 pl-4">
+          <h2 class="heading-secondary u-margin-top-small u-margin-bottom-small">
+            Latest
+          </h2>
+        </div>
+      </div>
+      <div class="col-lg-6 wow fadeIn" data-wow-duration="2.4s" style="visibility: visible; animation-duration: 2.4s; animation-name: fadeIn;">
+        {{$path := path.Join .Site.Data.homepage.news.featured.type  .Site.Data.homepage.news.featured.title}}
+        {{$printed_news_title := ""}}
+        {{with .Site.GetPage $path}}
+        {{if eq .Site.Data.homepage.news.featured.type "news"}}
+        <div class="card card__featured">
+          <div class="ribbon ribbon-top-left"><span>News</span></div>
+          <a href="{{.Params.link}}"><img src="{{.Params.image}}" alt="" class="card-img-top card__featured-img" /></a>
+          <div class="card-header">
+            <h5 class="card-title card__featured-header"><a href="{{.Params.link}}">{{.Title}}</a></h5>
+          </div>
+          <div class="card__featured-icons card__featured-icons--main">
+            <i class="fas fa-calendar-alt"></i><span>{{ dateFormat "Jan 2, 2006" .Date }}</span>
+          </div>
+          <div class="card__featured-icons">
+            <i class="far fa-newspaper"></i><span>{{.Params.newsprovider}}</span>
+          </div>
+          <div class="card-body">
+            <p class="card-text">{{.Summary | truncate 200}}</p>
+          </div>
+        </div>
+        {{$printed := false}}
+
+        {{range (where .Site.RegularPages "Section" "news").ByDate.Reverse}}
+        {{$filename := path.Join "news" .File.LogicalName}}
+        {{if and (not $printed) (ne $filename $path)  }}
+        <div class="wow fadeIn" data-wow-duration="2.2s"
+          style="visibility: visible; animation-duration: 2.4s; animation-name: fadeIn;">
+          <div class="card card__small-cards">
+            <div class="row no-gutters">
+              <div class="col-lg-4 col-4">
+                <span class="ribbon1"><span>News</span></span>
+                <a href="{{.Params.link}}"><img src="{{.Params.image}}" alt="" class="card-img card__small-cards-img"></a>
+              </div>
+              <div class="col-lg-8 col-8">
+                <div class="card-body">
+                  <h4 class="card-title card__small-cards-header"><a href="{{.Params.link}}">{{.Title}}</a></h4>
+                  <div class="card__small-cards-icons card__small-cards-icons--main">
+                    <i class="fas fa-calendar-alt"></i><span>{{ dateFormat "Jan 2, 2006" .Date }}</span>
+                  </div>
+                  <div class="card__small-cards-icons">
+                    <i class="far fa-newspaper"></i><span>{{.Params.newsprovider}}</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        {{$printed_news_title = .Title}}
+        {{$printed = true}}
+        {{end}}
+        {{end}}
+        {{end}}
+        {{end}}
+      </div>
+      <div class="col-lg-5">
+        {{$printed := false}}
+        {{range ((where .Site.RegularPages "Section" "news").ByDate.Reverse)}}
+        {{$filename := path.Join "news" .File.LogicalName}}
+        {{if and (not $printed) (and (ne $filename $path) (ne $printed_news_title .Title))  }}
+        <div class="wow fadeIn" data-wow-duration="2.2s"
+          style="visibility: visible; animation-duration: 2.4s; animation-name: fadeIn;">
+          <div class="card card__small-cards">
+            <div class="row no-gutters">
+              <div class="col-lg-4 col-4">
+                <span class="ribbon1"><span>News</span></span>
+                <a href="{{.Params.link}}"><img src="{{.Params.image}}" alt="" class="card-img card__small-cards-img"></a>
+              </div>
+              <div class="col-lg-8 col-8">
+                <div class="card-body">
+                  <h4 class="card-title card__small-cards-header"><a href="{{.Params.link}}">{{.Title}}</a></h4>
+                  <div class="card__small-cards-icons card__small-cards-icons--main">
+                    <i class="fas fa-calendar-alt"></i><span>{{ dateFormat "Jan 2, 2006" .Date }}</span>
+                  </div>
+                  <div class="card__small-cards-icons">
+                    <i class="far fa-newspaper"></i><span>{{.Params.newsprovider}}</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        {{$printed = true}}
+        {{end}}
+        {{end}}
+
+        {{range first 3 (where .Site.RegularPages "Section" "events").ByDate.Reverse}}
+        {{$filename := path.Join "events" .File.LogicalName}}
+        {{if (ne $filename $path)}}
+        <div class="wow fadeIn" data-wow-duration="2.2s" style="visibility: visible; animation-duration: 2.4s; animation-name: fadeIn;">
+          <div class="card card__small-cards">
+            <div class="row no-gutters">
+              <div class="col-lg-4 col-4">
+                <span class="ribbon1 ribbon1--color1"><span>Event</span></span>
+                <a href="{{.Permalink}}"><img src="{{.Params.image}}" alt="" class="card-img card__small-cards-img"></a>
+              </div>
+              <div class="col-lg-8 col-8">
+                <div class="card-body">
+                  <h4 class="card-title card__small-cards-header"><a href="{{.Permalink}}">{{.Title}}</a></h4>
+                  <div class="card__small-cards-icons card__small-cards-icons--main">
+                    <i class="fas fa-calendar-alt"></i><span>{{ dateFormat "Jan 2, 2006" .Date }}</span>
+                  </div>
+                  <div class="card__small-cards-icons card__small-cards-icons--color1">
+                    <i class="fas fa-map-marker-alt"></i><span>{{.Params.venue}}</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        {{end}}
+        {{end}}
+        {{$printed = false}}
+        {{range (where .Site.RegularPages "Section" "newsletter").ByDate.Reverse}}
+        {{$filename := path.Join "newsletter" .File.LogicalName}}
+        {{if and (not $printed) (ne $filename $path)}}
+        <div class="wow fadeIn" data-wow-duration="2.2s"
+          style="visibility: visible; animation-duration: 2.4s; animation-name: fadeIn;">
+          <div class="card card__small-cards">
+            <div class="row no-gutters">
+              <div class="col-lg-4 col-4">
+                <span class="ribbon1 ribbon1--color2"><span>Newsletter</span></span>
+                <a href="{{.Params.link}}"><img src="{{.Params.image}}" alt="" class="card-img card__small-cards-img"></a>
+              </div>
+              <div class="col-lg-8 col-8">
+                <div class="card-body">
+                  <h4 class="card-title card__small-cards-header"><a href="{{.Params.link}}">{{.Title}}</a></h4>
+                  <div class="card__small-cards-icons card__small-cards-icons--main">
+                    <i class="fas fa-calendar-alt"></i><span>{{ dateFormat "Jan, 2006" .Date }}</span>
+                  </div>
+                  <div class="card__small-cards-icons card__small-cards-icons--color2">
+                    <i class="fas fa-book-open"></i><span>Quartely Newsletter</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        {{$printed = true}}
+        {{end}}
+        {{end}}
+      </div>
+      <div class="text-center w-100 mb-5 mr-5 mt-5">
+        <a href="{{ `news` | absURL}}" class="btn btn--red-outline-small">View more</a>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="section-publication">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="text-center">
+          <h2
+            class="heading-secondary u-margin-top-small u-margin-bottom-small"
+          >
+            Recent Publications
+          </h2>
+        </div>
+        <div class="row justify-content-center">
+          {{ range first 3 (where .Site.RegularPages "Section" "publications")}}
+          <div class="col-lg-10 wow fadeInUp" data-wow-duration="1.4s" style="visibility: visible; animation-duration: 1.4s; animation-name: fadeInUp;">
+            {{partial "cards/publications.html" (dict "context" . "class" "nobagde")}}
+          </div>
+          {{ end }}
+          <div class="text-center w-100 mb-5 mt-5">
+            <a href="{{ `publications` | absURL}}" class="btn btn--blue-outline-small"
+              >View more</a
+            >
+          </div>
+        </div>
+      </div>
+      <div class="col-md-12"></div>
+    </div>
+  </div>
+</section>
+
+{{ end }}

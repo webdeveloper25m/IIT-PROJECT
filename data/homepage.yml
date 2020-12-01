@@ -1,0 +1,18 @@
+#hero slider
+hero:
+  slides:
+
+    - title : "RBCDSAI - Responding to COVID-19"
+      description : "Researchers from RBCDSAI, IIT Madras have been working on several timely projects to model the infection spread and analyse other COVID-19 related data."
+      link : "https://rbcdsai.iitm.ac.in/covid19/"
+      image: "/images/hero-5.jpg"
+
+    - title : "Robert Bosch Centre for Data Science and Artificial Intelligence"
+      description : "Founded in August 2017, with a vision to become an internationally renowned centre for data science research, where long-standing fundamental research problems, cutting across disciplines, are targeted and solved. "
+      link : "https://rbc-dsai.megamsolutions.com/about-us/"
+      image: "/images/hero-7.jpg"
+
+news:
+  featured:
+    type: "news"
+    title: "Increased-Mobility.md"

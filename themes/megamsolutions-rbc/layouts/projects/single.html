@@ -1,0 +1,59 @@
+{{ define "main" }}
+<section class="section-hero-research hero hero--research mb-5">
+  <div class="hero-breadcrumb">
+    <ul class="hero-breadcrumb-list">
+      <li>
+        <a href="{{ `/` | absURL }}"><i class="fas fa-home"></i></a>
+      </li>
+      <li>
+        <a href="{{ `/home/research/` | absURL }}"><i class="fas fa-vial"></i> Research</a>
+      </li>
+      <li>
+        <a href="{{ `/projects/` | absURL }}"><i class="fas fa-project-diagram"></i> Projects</a>
+      </li>
+
+      <li>
+        <a href="#">{{.Title | truncate 50}}</a>
+      </li>
+    </ul>
+  </div>
+</section>
+<section class="section-page-research mb-5">
+  <div class="container">
+    <div class="text-center">
+      <h2 class="heading-single-page u-margin-top-small u-margin-bottom-small">
+        {{.Title}}
+      </h2>
+      {{if eq .Params.categories "projects"}}
+      <div class="research-single-icons">
+        <i class="fas fa-user-tie"></i>
+        {{range $key, $value := .Params.authors }}
+        {{ if $key }}, {{ end }}
+        {{$file := printf "people/%s.md" ($value | urlize)}}
+        {{with $.Site.GetPage $file}}
+        <a href="{{.Permalink}}"><span>{{$value}}</span></a>
+        {{else}}
+        <span>{{$value}}</span>
+        {{end}}
+        {{end}}
+      </div>
+      {{end}}
+      <div class="research-single-icons">
+        {{with .Params.tags}}
+        <i class="fas fa-tags"></i>
+        {{range $key, $value := . }}
+        {{ if $key }}, {{ end }}
+        <a href="/tags/{{ $value | urlize}}" class="research-single-tag">{{ $value  }}</a>
+        {{end}}
+        {{end}}
+      </div>
+    </div>
+    <div class="row justify-content-center">
+      <div class="col-md-8 research-single-page__img" style="background-image: url(/images/research/{{.Params.image}});"></div>
+      <article class="col-md-8 content-text text-justify">
+        {{ .Content }}
+      </article>
+    </div>
+  </div>
+</section>
+{{end}}

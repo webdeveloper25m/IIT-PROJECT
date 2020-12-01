@@ -1,0 +1,54 @@
+{{ define "main" }}
+<section class="section-hero-credits hero hero--credits">
+  <div class="hero-breadcrumb">
+    <ul class="hero-breadcrumb-list">
+      <li>
+        <a href="{{ `/` | absURL }}"><i class="fas fa-home"></i></a>
+      </li>
+      <li>
+        <a href="{{ `/credits/` | absURL }}"><i class="fas fa-coins"></i> Credits</a>
+      </li>
+    </ul>
+  </div>
+</section>
+<section class="section-page-credits">
+  <div class="container">
+    <div class="text-center">
+      <h2 class="heading-secondary u-margin-top-small u-margin-bottom-small">
+        Credits
+      </h2>
+    </div>
+    <div class="row justify-content-center mb-5">
+      <div class="col-md-8">
+        <h2 class="heading-tertiary"> Built with</h2>
+        {{ with .Site.Data.credits.Builtwith }}
+        <ul>
+        {{ range .items}}
+        <li><i class="fas fa-link"></i><a href={{.link}}>{{.title}}</a></li>
+        {{end}}
+        </ul>
+        {{end}}
+      </div>
+      <div class="col-md-8">
+        <h2 class="heading-tertiary"> Image Credits</h2>
+        {{ with .Site.Data.credits.Imagecredits }}
+        <ul>
+          {{ range .items}}
+          <li><i class="fas fa-link"></i><a href={{.link}}>{{.title}}</a></li>
+          {{end}}
+        </ul>
+        {{end}}
+      </div>
+      <div class="col-md-8">
+       <h2 class="heading-tertiary">
+         Web Development
+       </h2>
+       <ul>
+         <li><p>Designed and Developed by <a href="https://megamsolutions.com/">Megamsolutions Team</a></p></li>
+        </ul>
+      </div>
+    </div>
+
+  </div>
+</section>
+{{ end }}

@@ -1,0 +1,79 @@
+// COLORS
+$color-primary: #EE2128;
+$color-primary-light: lighten($color-primary, 20%);
+$color-primary-dark: darken($color-primary, 20%);
+
+$color-secondary: #A74F14;
+$color-secondary-light: lighten($color-secondary, 20%);
+$color-secondary-dark: darken($color-secondary, 20%);
+
+$color-tertiary: #2F8b88;
+$color-tertiary-light: lighten($color-tertiary, 20%);
+$color-tertiary-dark: darken($color-tertiary, 20%);
+
+$color-font-primary: #737373;
+$color-font-primary-light: lighten($color-font-primary, 20%);
+$color-font-primary-dark: darken($color-font-primary, 20%);
+
+$color-grey-light-1: #f7f7f7;
+$color-grey-light-2: #eee;
+$color-grey-light-3: #d6d5d5;
+
+$color-grey-dark-1: #777;
+$color-grey-dark-2: #999;
+$color-grey-dark-3: #333;
+
+$color-breadcrumb: #e6275a;
+$color-breadcrumb-light: #df1249;
+
+$color-card-1: #ffc20b;
+$color-card-1-light:#ffcf3e;
+$color-card-2: #40cbb4;
+$color-card-2-light: #75dac9;
+$color-card-3: #4c35a9;
+$color-card-3-light: #6e57ca;
+$color-card-4: #e6275a;
+$color-card-4-light: #ed6489;
+
+$color-card-5: #d6a64f;
+$color-card-6: #96ca4c;
+$color-card-7: #41cbb4;
+$color-card-8: #4d36aa;
+
+$color-slider: #4BD763;
+
+$color-timeline: #3F51B5;
+$color-timeline-dark: #303F9F;
+$color-timeline-light: #C5CAE9;
+$color-timeline-accent: #FF4081;
+
+$color-timeline-1: #ffc20b;
+$color-timeline-2: #40cbb4;
+$color-timeline-3: #4c35a9;
+$color-timeline-4: #e6275a;
+
+$color-newsletter-1: #f05f8f;
+$color-newsletter-2: #de59ec;
+$color-newsletter-3: #7A21EE;
+$color-newsletter-4: #6270ee;
+$color-newsletter-5: #4cd3ee;
+$color-newsletter-6: #eca34e;
+
+$color-white: #fff;
+$color-black: #000;
+$color-code-bg: #002538;
+
+// $color-main: #150928;
+$color-main: #222222;
+$color-main-dark: #181818;
+$color-main-light: #2e2e2e;
+$color-main-light-transparent: rgba($color-main, 0.8);
+
+// FONT
+$default-font-size: 1.6rem;
+
+// GRID150928
+$grid-width: 114rem;
+$gutter-vertical: 8rem;
+$gutter-vertical-small: 6rem;
+$gutter-horizontal: 6rem;

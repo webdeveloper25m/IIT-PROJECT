@@ -1,0 +1,30 @@
+.carousel-item {
+  min-height: 350px;
+  background: no-repeat center center;
+  background-size: cover;
+}
+
+.hero__carousel {
+  height: 45vh;
+  width: 75%;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: $color-grey-light-1;
+  margin-top: 5rem;
+  text-align: center;
+
+  &-title {
+    font-size: 3rem;
+    font-weight: 400;
+    margin-bottom: 2.5rem;
+  }
+
+  &-text {
+    font-size: 1.5rem;
+    font-weight: 300;
+    margin-bottom: 3.5rem;
+  }
+}

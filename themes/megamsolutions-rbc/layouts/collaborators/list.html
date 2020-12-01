@@ -1,0 +1,60 @@
+{{ define "main" }}
+<section class="section-hero-people hero hero--people">
+  <div class="hero-breadcrumb">
+    <ul class="hero-breadcrumb-list">
+      <li>
+        <a href="{{ `/` | absURL }}"><i class="fas fa-home"></i></a>
+      </li>
+      <li>
+        <a href="{{ `/collaborators/` | absURL }}"><i class="fas fa-user"></i> Collaborators</a>
+      </li>
+    </ul>
+  </div>
+</section>
+<section class="section-page-people mb-5">
+  <div class="container-fluid">
+    <div class="row justify-content-center mt-5">
+      {{$categories := slice "collaborators"}}
+      {{$Pages := .Pages}}
+      <div class="col-11">
+        {{$checked := ""}}
+        <ul class="nav nav-tabs tabs mb-5 d-none" id="category-tab" role="tablist">
+          {{ range $key,$value := ($categories | uniq ) }}
+          {{if not $key}}
+          {{$checked = "active"}}
+          {{else}}
+          {{$checked = ""}}
+          {{end}}
+          <li class="nav-item">
+            <a class="nav-link {{$checked}}" id="{{$value}}-tab"
+              data-toggle="pill" href="#{{$value}}" role="tab" aria-controls="{{$value}}">{{$value | humanize}}</a>
+          </li>
+          {{end}}
+        </ul>
+        <div class="tab-content" id="cattabcontent">
+          {{ range $key,$value := ($categories | uniq ) }}
+          {{if not $key}}
+          {{$checked = "active show"}}
+          {{else}}
+          {{$checked = ""}}
+          {{end}}
+          <div class="tab-pane fade {{$checked}}" id="{{$value}}" role="tabpanel">
+            <div class="row justify-content-center">   
+              {{$list := (index $.Site.Taxonomies.categories $value)}}
+              {{if or (eq $value "staff") (eq $value "researchers") (eq $value "alumni")}}
+              {{$list = sort $list "Title"}}
+              {{end}}
+              {{ range $list}}
+              <div class="col-md-5">
+                {{partial "cards/people.html" .}}
+              </div>
+              {{ end }}
+            </div>
+          </div>
+          {{end}}
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+{{ end }}

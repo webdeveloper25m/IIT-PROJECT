@@ -1,0 +1,82 @@
+industry:
+  items:
+    - name: applied-material
+      image: industry/applied-materials.png
+    - name: Bosch
+      image: industry/bosch.svg
+    - name: dvara
+      image: industry/dvara.png
+    - name: society-generale
+      image: industry/society-generale.png
+    - name: dassault
+      image: industry/dassault.png
+    - name: ericson
+      image: industry/ericson.png
+    - name: gavs
+      image: industry/gavs.png
+    - name: ashok-leyland
+      image: industry/ashok-leyland.png
+    - name: microsoft
+      image: industry/microsoft.png
+    - name: freshworks
+      image: industry/freshworks.svg
+    - name: intel
+      image: industry/intel.png
+    - name: tcs
+      image: industry/tcs.png
+    - name: Honeywell
+      image: industry/honeywell.png
+    - name: ge
+      image: industry/ge.png
+    - name: IBM Research
+      image: industry/ibm.jpg
+    - name: Google
+      image: industry/Google.svg
+    - name: Biocon
+      image: industry/biocon.png
+    - name: sankara
+      image: industry/sankara.jpg
+    - name: toyota
+      image: industry/Toyota.svg
+    - name: wandhwani
+      image: industry/wadhwani.png
+    - name: saint gobain
+      image: industry/saint-gobain.png
+    - name: kla
+      image: industry/kla.png
+    - name: nvida
+      image: industry/nvida.png
+    - name: verisk
+      image: industry/Verisk.png
+    - name: northwestern
+      image: industry/northwestern-university.png
+    - name: itihaasa
+      image: industry/itihaasa.png
+    - name: webscience
+      image: industry/webtrust_logo_blue.jpg
+
+
+government:
+  items:
+    - name: tn
+      image: government/Tamil_Nadu.svg
+    - name: ministry-of-statistics
+      image: government/ministry-of-statistics.png
+    - name: 108
+      image: government/108.png
+    - name: navi
+      image: government/navi.png
+    - name: ncbs
+      image: government/ncbs.png
+    - name: serb
+      image: government/serb.png
+    - name: genome
+      image: government/genome.png
+    - name: indian railways
+      image: government/indian-railways.png
+    - name: ni
+      image: government/ni.png
+    - name: thsti
+      image: government/thsti.png
+    - name: drdo
+      image: government/drdo.png

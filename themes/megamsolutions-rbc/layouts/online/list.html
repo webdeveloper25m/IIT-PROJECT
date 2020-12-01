@@ -1,0 +1,113 @@
+{{ define "main" }}
+<section class="section-hero-teaching hero hero--teaching">
+  <div class="hero-text">
+    <p>Here is a list of various courses offered by the faculty associated with RBCDSAI.</p>
+    <a href="https://ctm-iitm.iimbx.edu.in/">Online Certificate Programme in Technology and Management jointly offered by IIM Bangalore’s IIMBx MOOCs Programme and
+    IIT Madras’ CCE and RBCDSAI</a>
+
+  </div>
+  <div class="hero-breadcrumb">
+    <ul class="hero-breadcrumb-list">
+      <li>
+        <a href="{{ `/` | absURL }}"><i class="fas fa-home"></i></a>
+      </li>
+      <li>
+        <a href="{{ `/home/academics/` | absURL }}"><i class="fas fa-chalkboard-teacher"></i> Academics</a>
+      </li>
+      <li>
+        <a href="{{ `/teaching/` | absURL }}"><i class="fas fa-chalkboard-teacher"></i> Online Courses</a>
+      </li>
+    </ul>
+  </div>
+</section>
+<section class="section-page-teaching">
+  <div class="container-fluid">
+    <div class="text-center">
+      <h2 class="heading-secondary u-margin-top-small u-margin-bottom-small">
+        Online Courses
+      </h2>
+    </div>
+    <div class="row justify-content-center">
+      {{$tags_nptel := slice}}
+      {{$tags_electives := slice}}
+      {{ $categories := slice "nptel-courses"}}
+      {{ range .Pages}}
+      {{if eq .Params.categories "nptel-courses"}}
+        {{range sort .Params.tags}}
+        {{$tags_nptel = $tags_nptel | append ( . ) }}
+        {{end}}
+      {{else if eq .Params.categories "iitm-electives"}}
+        {{ range sort .Params.tags}}
+        {{ $tags_electives = $tags_electives | append ( . ) }}
+        {{end}}
+      {{end }}
+      {{end }}
+      <div class="col-11">
+        <h3 class="mb-4 d-none">Category</h3>
+        {{$checked := ""}}
+        <ul class="nav nav-pills mb-4 d-none" id="category-tab" role="tablist">
+          {{ range $key,$value := ($categories | uniq ) }}
+          {{if not $key}}
+          {{$checked = "active"}}
+          {{else}}
+          {{$checked = ""}}
+          {{end}}
+          <li class="nav-item">
+            <a class="nav-link button button--medium  button--color{{add $key 1}} {{$checked}}" id="{{$value}}-tab"
+              data-toggle="pill" href="#{{$value}}" role="tab" aria-controls="{{$value}}">{{$value | humanize | upper}}</a>
+          </li>
+          {{end}}
+        </ul>
+        <div class="tab-content" id="cattabcontent">
+          {{ range $key,$value := ($categories | uniq ) }}
+          {{if not $key}}
+          {{$checked = "active show"}}
+          {{else}}
+          {{$checked = ""}}
+          {{end}}
+          <div class="tab-pane {{$checked}}" id="{{$value}}" role="tabpanel">
+            <div class="filters-btn">
+              <div class="group-btn">
+                <h3 class="mb-4">Tags</h3>
+                <div class="button-group  ml-4" role="group" data-toggle="buttons" data-filter-group="tags">
+                  <button type="button" class="button is-checked" data-filter=".{{$value}}">ALL</button>
+                  {{$tag_list := slice}}
+                  {{if eq $value "nptel-courses"}}
+                  {{$tag_list = $tags_nptel}}
+                  {{else if eq $value "iitm-electives"}}
+                  {{$tag_list = $tags_electives}}
+                  {{end}}
+                  {{ range sort ($tag_list | uniq ) }}
+                  <button type="button" class="button" data-filter=".{{$value}}.{{ . | urlize}}">{{ .  }}</button>
+                  {{ end }}
+
+                </div>
+              </div>
+            </div>
+          </div>
+          {{end}}
+        </div>
+      </div>
+    </div>
+    <div class="filter my-5">
+      {{ range .Pages}}
+      {{$groups := slice}}
+      {{range .Params.tags}}
+      {{$groups = $groups | append .}}
+      {{end}}
+      {{$groups = $groups | append .Params.categories}}
+      {{$class := ""}}
+      {{if eq .Params.categories "nptel-courses"}}
+      {{$class = "card__teaching--color1"}}
+      {{else if eq .Params.categories "iitm-electives"}}
+      {{$class = "card__teaching--color2"}}
+      {{end}}
+      <div class="col-xl-4 col-md-6 filter-item {{ range $groups }}{{. | urlize}} {{end}}">
+        {{partial "cards/teaching.html" (dict "context" . "class" $class) }}
+      </div>
+      {{ end }}
+    </div>
+
+  </div>
+</section>
+{{ end }}

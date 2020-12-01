@@ -1,0 +1,92 @@
+{{ define "main" }}
+<section class="section-hero-people hero hero--people mb-5">
+  <div class="hero-breadcrumb">
+    <ul class="hero-breadcrumb-list">
+      <li>
+        <a href="{{ `/` | absURL }}"><i class="fas fa-home"></i></a>
+      </li>
+      <li>
+        <a href="{{ `/management/` | absURL }}"><i class="fas fa-university"></i> Management</a>
+      </li>
+      <li>
+        <a href="#">{{.Title | truncate 50}}</a>
+      </li>
+    </ul>
+  </div>
+</section>
+<section class="section-page-people mb-5">
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-md-6 mb-4 people-single-photo ">
+        <img src="/images/side.png" alt="side" class="side-img">
+        {{$image := .Params.image}}
+        {{with .Params.hidePhoto}}
+        {{$image = "/images/people/people-default.svg"}}
+        {{end}}
+        <img src="{{$image}}" alt="{{.Title}}" class="image">
+      </div>
+      <div class="col-md-6 text-justify people-single-content">
+        <h2 class="name">{{.Title}}</h2>
+        {{range .Params.roles}}
+        <h2 class="designation">{{.}}</h2>
+        {{end}}
+        <div class="icons">
+          <a href=""><i class="far fa-envelope"></i></a>
+          <a href=""><i class="fab fa-facebook-f"></i></a>
+          <a href=""><i class="fab fa-twitter"></i></a>
+          <a href=""><i class="fab fa-linkedin-in"></i></a>
+          <a href=""><i class="fab fa-github"></i></a>
+        </div>
+        <div class="line"></div>
+        <p class="profile-text">{{.Content}}</p>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="section-page-people mb-5">
+  <div class="container-fluid">
+    {{range (index $.Site.Taxonomies.authors (.File.BaseFileName | lower)).Pages.GroupBy "Section"}}
+
+    <div class="text-center mb-4">
+      <h2 class="heading-secondary u-margin-top-medium u-margin-bottom-small">
+        {{.Key}}
+      </h2>
+    </div>
+    <div class="row">
+      {{range first 3 .Pages}}
+        {{if eq .Section "publications"}}
+        <div class="col-md-10">
+          {{partial "cards/publications.html" (dict "context" . "class" "")}}
+        </div>
+        {{else if eq .Section "research"}}
+        <div class="col-xl-4 col-md-6">
+          {{partial "cards/research.html" (dict "context" . "class" "")}}
+        </div>
+        {{else if eq .Section "projects"}}
+        <div class="col-xl-4 col-md-6">
+          {{partial "cards/research.html" (dict "context" . "class" "")}}
+        </div>
+        {{else if eq .Section "academics"}}
+        <div class="col-xl-4 col-md-6">
+          {{partial "cards/teaching.html" (dict "context" . "class" "" "showcategory" true)}}
+        </div>
+        {{else if eq .Section "iitm-electives"}}
+        <div class="col-xl-4 col-md-6">
+          {{partial "cards/teaching.html" (dict "context" . "class" "" "showcategory" true)}}
+        </div>
+        {{else if eq .Section "online"}}
+        <div class="col-xl-4 col-md-6">
+          {{partial "cards/teaching.html" (dict "context" . "class" "" "showcategory" true)}}
+        </div>
+        {{else if eq .Section "blogs"}}
+        <div class="col-md-8">
+          {{partial "cards/blogs.html" .}}
+        </div>
+        {{end}}
+      {{end}}
+    </div>
+    {{end}}
+  </div>
+</section>
+
+{{end}}

@@ -1,0 +1,60 @@
+{{ define "main" }}
+<section class="section-hero-blogs hero hero--blogs mb-5">
+  <div class="hero-breadcrumb">
+    <ul class="hero-breadcrumb-list">
+      <li>
+        <a href="{{ `/` | absURL }}"><i class="fas fa-home"></i></a>
+      </li>
+      <li>
+        <a href="{{ `/blogs/` | absURL }}"><i class="fas fa-blog"></i> Blogs</a>
+      </li>
+      <li>
+        <a href="#">{{.Title | truncate 50}}</a>
+      </li>
+    </ul>
+  </div>
+</section>
+<section class="section-page-blogs-single blogs-single mb-5">
+  <div class="container">
+    <div class="text-center mb-4">
+      <h1 class="heading-single-page u-margin-top-small u-margin-bottom-small">
+        {{.Title}}
+      </h1>
+      <div class="blogs-single-icons">
+        <i class="fas fa-user-tie"></i>
+        {{range $key, $value := .Params.authors }}
+          {{ if $key }}, {{ end }}
+          {{$file := printf "people/%s.md" ($value | urlize)}}
+          {{with $.Site.GetPage $file}}
+          <a href="{{.Permalink}}"><span>{{$value}}</span></a>
+          {{else}}
+          <span>{{$value}}</span>
+          {{end}}
+        {{end}}
+      </div>
+      <div class="blogs-single-icons">
+        {{with .Params.blogs_tags}}
+        <i class="fas fa-tags"></i>
+        {{range $key, $value := . }}
+        {{ if $key }}, {{ end }}
+        <a href="/blogs_tags/{{ $value | urlize}}" class="blogs-single-tag">{{ $value  }}</a>
+        {{end}}
+        {{end}}
+      </div>
+    </div>
+    <div class="row justify-content-center">
+      <div class="col-md-8 blogs-single-img"
+        style="background-image: url(/images/blogs/{{.Params.image}});">
+      </div>
+      <div class="col-md-12">
+        <article class="text-justify">
+          {{ .Content }}
+        </article>
+      </div>      
+    </div>
+    <div class="blog-related">
+      {{partial "related.html" .}}
+    </div>
+  </div>
+</section>
+{{end}}
