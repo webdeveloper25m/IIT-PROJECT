@@ -1,4 +1,4 @@
-baseURL = "https://rbc-dsai.megamsolutions.com"
+baseURL = ""
 languageCode = "en-us"
 title = "Robert Bosch Center for Data Science and Artificial Intelligence"
 theme = "megamsolutions-rbc"
