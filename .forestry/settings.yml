@@ -1,0 +1,171 @@
+---
+new_page_extension: md
+auto_deploy: false
+admin_path: 
+webhook_url: 
+sections:
+- type: directory
+  path: content
+  label: Pages
+  create: all
+  match: "*"
+- type: directory
+  path: content/work-with-us
+  label: Work with us
+  create: all
+  match: "**/*"
+- type: directory
+  path: content/visitors
+  label: Visitors
+  create: all
+  match: "**/*"
+- type: directory
+  path: content/upcoming
+  label: Upcoming
+  create: all
+  match: "**/*"
+- type: directory
+  path: content/staff
+  label: Staff
+  create: all
+  match: "**/*"
+- type: directory
+  path: content/software
+  label: Software
+  create: all
+  match: "**/*"
+- type: directory
+  path: content/researchers
+  label: Researchers
+  create: all
+  match: "**/*"
+- type: directory
+  path: content/research
+  label: Research
+  create: all
+  match: "**/*"
+- type: directory
+  path: content/quicklinks
+  label: Quicklinks
+  create: all
+  match: "**/*"
+- type: directory
+  path: content/publications
+  label: Publications
+  create: all
+  match: "**/*"
+- type: directory
+  path: content/projects
+  label: Projects
+  create: all
+  match: "**/*"
+- type: directory
+  path: content/programs
+  label: Programs
+  create: all
+  match: "**/*"
+- type: directory
+  path: content/people
+  label: People
+  create: all
+  match: "**/*"
+- type: directory
+  path: content/online
+  label: Online
+  create: all
+  match: "**/*"
+- type: directory
+  path: content/newsletter
+  label: Newsletter
+  create: all
+  match: "**/*"
+- type: directory
+  path: content/news
+  label: News
+  create: all
+  match: "**/*"
+- type: directory
+  path: content/management
+  label: Management
+  create: all
+  match: "**/*"
+- type: directory
+  path: content/join-us
+  label: Join us
+  create: all
+  match: "**/*"
+- type: directory
+  path: content/industry
+  label: Industry
+  create: all
+  match: "**/*"
+- type: directory
+  path: content/iitm-electives
+  label: Iitm electives
+  create: all
+  match: "**/*"
+- type: directory
+  path: content/home
+  label: Home
+  create: all
+  match: "**/*"
+- type: directory
+  path: content/government
+  label: Government
+  create: all
+  match: "**/*"
+- type: directory
+  path: content/gallery
+  label: Gallery
+  create: all
+  match: "**/*"
+- type: directory
+  path: content/faculty
+  label: Faculty
+  create: all
+  match: "**/*"
+- type: directory
+  path: content/events
+  label: Events
+  create: all
+  match: "**/*"
+- type: directory
+  path: content/credits
+  label: Credits
+  create: all
+  match: "**/*"
+- type: directory
+  path: content/collaborators
+  label: Collaborators
+  create: all
+  match: "**/*"
+- type: directory
+  path: content/blogs
+  label: Blogs
+  create: all
+  match: "**/*"
+- type: directory
+  path: content/alumni
+  label: Alumni
+  create: all
+  match: "**/*"
+- type: directory
+  path: content/academics
+  label: Academics
+  create: all
+  match: "**/*"
+upload_dir: static/uploads
+public_path: "/uploads"
+front_matter_path: ''
+use_front_matter_path: false
+file_template: ":filename:"
+build:
+  preview_env:
+  - HUGO_ENV=staging
+  - HUGO_VERSION=0.78.2
+  preview_output_directory: public
+  preview_docker_image: forestryio/hugo:latest
+  mount_path: "/srv"
+  working_dir: "/srv"
+  instant_preview_command: hugo server -D -E -F --renderToDisk -d public
+version: 0.78.2
